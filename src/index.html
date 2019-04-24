@@ -7,6 +7,64 @@
   <title>Document</title>
 </head>
 <body>
+  <header>
+      <nav></nav>
+  </header>
+  <main>
+      <h1>The CookBook</h1>
+      <h2>Si lo tuyo es visitar nuevos lugares para comer, aquí encontrarás las recomendaciones que buscas.</h2>
+      <label for="user-name">Nombre:</label>
+      <input id="user-name" type="text" required>
+      <label for="login-email">Correo electrónico: </label>
+      <input id="login-email" type="email" required>
+      <label for="login-password">Contraseña: </label>
+      <input id="login-password" type="password">
+      <button id="btn-login">Registrarse</button>
+      <p>O bien ingresa con...</p>
+      <figure>
+          <img src="../images/logo-google.svg" alt="Google" style="width:40px;">
+      </figure>
+      <figure>
+          <img src="../images/logo-facebook.svg" alt="" style="width:40px;">
+      </figure>
+      <p>¿No tienes una cuenta? <a href="#">Regístrate.</a></p>
+  </main>
+  <!-- Firebase App is always required and must be first -->
+  <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase-app.js"></script>
+  <!-- SERVICIO DE AUTENTICACIÓN -->
+  <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase-auth.js"></script>
+
+  <script>
+      // Initialize Firebase
+      const config = {
+        apiKey: "AIzaSyDgUa639sjilPBQ48A5ajQYOWStLSVrD5w",
+        authDomain: "laboratoria-social-netwo-a27bb.firebaseapp.com",
+        databaseURL: "https://laboratoria-social-netwo-a27bb.firebaseio.com",
+        projectId: "laboratoria-social-netwo-a27bb",
+        storageBucket: "laboratoria-social-netwo-a27bb.appspot.com",
+        messagingSenderId: "266751640205"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+    <!-- PROBANDO MUY PEQUEÑITO -->
+    <script>
+      const btnLogin = document.getElementById('btn-login');
+      
+      btnLogin.addEventListener('click', () => {
+        const userName = document.getElementById('user-name').value;
+        const loginEmail = document.getElementById('login-email').value;
+        const loginPassword = document.getElementById('login-password').value;
+        const auth = new authentication();
+        auth.createUserWithEmailAndPass(userName, loginEmail, loginPassword);
+        console.log(userName);
+        console.log(loginEmail);
+        console.log(loginPassword);
+        
+      })
+    </script>
+    <script src="probando.js"></script>
+  
   <script type="module" src="main.js"></script>
 </body>
 </html>
