@@ -19,6 +19,7 @@
       <input id="login-email" type="email" required>
       <label for="login-password">Contraseña: </label>
       <input id="login-password" type="password">
+      <div id="error-message"></div>
       <button id="btn-login">Registrarse</button>
       <p>O bien ingresa con...</p>
       <figure>
@@ -50,6 +51,7 @@
     <!-- PROBANDO MUY PEQUEÑITO -->
     <script>
       const btnLogin = document.getElementById('btn-login');
+      const errorMessage = document.getElementById('error-message');
       
       btnLogin.addEventListener('click', () => {
         const userName = document.getElementById('user-name').value;
@@ -60,8 +62,15 @@
         console.log(userName);
         console.log(loginEmail);
         console.log(loginPassword);
-        
+
+ 
       })
+
+      const printErrorMessage = () => {
+          errorMessage = `
+          <p>${error}</p>`
+        }
+       
     </script>
     <script src="probando.js"></script>
   

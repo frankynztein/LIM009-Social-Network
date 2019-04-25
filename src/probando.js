@@ -13,11 +13,19 @@ class authentication {
             })
             .catch(error => {
                 console.log(error);
+                const printErrorMessage = () => {
+                    errorMessage = `
+                    <p>${error}</p>`
+                }
             })
             firebase.auth().signOut()
         })
         .catch(error => {
             console.log(error);
+            const printErrorMessage = () => {
+                errorMessage = `
+                <p>${error}</p>`
+            }
         })
     }
 
