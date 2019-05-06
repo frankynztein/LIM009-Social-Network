@@ -1,14 +1,43 @@
-import {facebookLogin,googleLogin,createUser,userSesionActive,loginUser,exit} from '../view-controller/index.js'
+import {facebookLogin,googleLogin,createUser,userSesionActive,signInUser,exit} from '../view-controller/index.js'
 '../view/index.js'
 
 export const activeUserPage = (user) => {
   const content = document.getElementById('content');
   if (user != null) {
     let bienvenida = `
-    <button id="exit">Cerrar sesión</button>
-    <p>Bienvenidx ${user.displayName}</p>
-    <p>Email: ${user.email}<p>
-    <figure><img src="${user.photoURL}" alt="foto"></figure>`;
+      <div id="feed-container">
+        <div class="topnav" id="myTopnav">
+          <a href="#home" class="active">Hola, ${user.displayName}</a>
+          <a href="#news">News</a>
+          <a href="#contact">Contact</a>
+          <a href="#" id="exit">Cerrar sesión</a>
+          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+              <i class="fa fa-bars"></i>
+          </a>
+        </div>
+        <div class="feed-container">
+          <div class="feed-profile">
+            <figure class="circular-landscape">
+                <img src="${user.photoURL}" alt="Imagen de perfil." class="profile-img">
+            </figure>
+            <small class="profile-name">${user.displayName}</small>
+          </div>
+          <div class="feed-comment">
+            <input type="text" class="input-comment" size="50" placeholder="¿Qué quieres compartir?">
+            <button class="d-block btn-share-feed">Compartir</button>
+          </div>
+        </div>
+      </div>
+      <script>
+          function myFunction() {
+              var x = document.getElementById("myTopnav");
+              if (x.className === "topnav") {
+              x.className += " responsive";
+              } else {
+              x.className = "topnav";
+              }
+          }
+      </script>`;
     content.innerHTML = bienvenida;
 
     const btnExit = document.getElementById('exit');
@@ -18,27 +47,33 @@ export const activeUserPage = (user) => {
   }
 }
 
+
 export const page1 = () => {
+  /*
   const content = document.getElementById('content');
   const loginPage = `  
-  <figure>
-    <img src="../images/undraw_chef_lbjx.svg" alt="" style="width:300px;">
-  </figure>
-  <div id='login'>
-    <h1>FoodBook</h1>
-    <h3>¡Bienvenido, comensal!</h3>
-    <form id="login-user">
-      <input type="email" id="email-login" placeholder="Email">
-      <input type="password" id="password-login" placeholder="Password">
-      <button id="login-btn">Log in</button>
-      <p>O bien ingresa con...</p>
-      <button id="googleBtn"><img src="../images/search.svg" alt="Google" style="width:30px;"></img></button>
-      <button id="fbBtn"><img src="../images/facebook-logo-in-circular-button-outlined-social-symbol.svg" alt="Facebook" style="width:30px;"></img></button>
-    </form>
-    <p>¿No tienes una cuenta? <a id="myBtn" href="#">Regístrate.</a></p>
-  </div>`;
+    <div id="login-container">
+      <figure>
+        <img class="s-size b-size" src="../images/undraw_chef_lbjx.svg" alt="">
+      </figure>
+      <div id='login'>
+        <h1 class="center">FoodBook</h1>
+        <h3 class="center">¡Bienvenido, comensal!</h3>
+          <form id="login-user">
+              <input class="d-block input-w" type="email" id="email-login" placeholder="Email">
+              <input class="d-block input-w" type="password" id="password-login" placeholder="Password">
+              <button class="d-block btn-login btn-width" id="login-btn">Log in</button>
+              <p class="m-auto">O bien ingresa con...</p>
+              <a id="googleBtn"><img src="../images/search.svg" alt="Google" style="width:30px;"></img></a>
+              <a id="fbBtn"><img src="../images/facebook-logo-in-circular-button-outlined-social-symbol.svg" alt="Facebook" style="width:30px;"></img></a>
+          </form>
+        <p class="m-auto">¿No tienes una cuenta? <a id="myBtn" class="register" href="#">Regístrate.</a></p>
+      </div>
+    </div>`;
   content.innerHTML = loginPage;
 
+  */
+  /*
   const registerPage = () => {
     const login = document.getElementById('login')
     login.innerHTML = '';
@@ -55,6 +90,7 @@ export const page1 = () => {
     div.innerHTML = register;
     login.appendChild(div);
   };
+      */
 
   const registerUserOk = () => {
     const btnRegisterEmail = document.getElementById('register-btn');
@@ -79,7 +115,7 @@ export const page1 = () => {
   const passwordLogInEmail = document.getElementById('password-login');
   btnLogInEmail.addEventListener('click', (event) => {
     event.preventDefault();
-    loginUser(emailLogInEmail.value, passwordLogInEmail.value);
+    signInUser(emailLogInEmail.value, passwordLogInEmail.value);
   });
   userSesionActive();
 

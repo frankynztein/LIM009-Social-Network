@@ -1,5 +1,6 @@
 // Este es el punto de entrada de tu aplicacion
 import {page1} from './view/template.js';
+import { viewLogin } from './view/viewLogIn.js';
 
 var config ={
     apiKey: "AIzaSyDhPzlMom9mAEcuyk_Dw05NY2awAH_zYAU",
@@ -11,5 +12,10 @@ var config ={
   }
 firebase.initializeApp(config);
 
-window.onload = page1();
-// firebase
+window.onload = viewLogin();
+
+const init = () => {
+  window.addEventListener('hashchange', () => console.log(window.location.hash))
+}
+
+window.addEventListener('load', init);

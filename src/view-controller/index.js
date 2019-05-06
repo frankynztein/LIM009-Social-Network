@@ -1,16 +1,17 @@
 // aqui exportaras las funciones que necesites
-import {activeUserPage, page1} from '../view/template.js';
+import {activeUserPage} from '../view/template.js';
+import { viewLogin } from '../view/viewLogIn.js';
 
-//salir
+//Cerrar sesión
 export const exit = () => firebase.auth().signOut()
 .then(()=> {
   // Sign-out successful.
-  page1();
+  viewLogin();
 }).catch((error) =>{
   // An error happened.
 });
 
-//rcrear cuenta
+//Crear usuario
 export const createUser = (emailSignIn, passwordSignIn) => {
   firebase.auth().createUserWithEmailAndPassword(emailSignIn, passwordSignIn)
     .then((result) => {
@@ -26,7 +27,7 @@ export const createUser = (emailSignIn, passwordSignIn) => {
 export const signInUser = (emailLogIn, passwordLogIn) => {
   return firebase.auth().signInWithEmailAndPassword(emailLogIn, passwordLogIn)
 };
-//usuario con sesion activa
+//usuario con sesion activa - muestra info del usuario registrado
 export const userSesionActive = () => {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
