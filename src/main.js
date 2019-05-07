@@ -1,6 +1,7 @@
 // Este es el punto de entrada de tu aplicacion
-import {page1} from './view/template.js';
+import { initRouter } from './router.js';
 
+window.addEventListener('load', ()=>{
 var config ={
     apiKey: "AIzaSyDhPzlMom9mAEcuyk_Dw05NY2awAH_zYAU",
     authDomain: "red-social-58567.firebaseapp.com",
@@ -8,8 +9,16 @@ var config ={
     projectId: "red-social-58567",
     storageBucket: "red-social-58567.appspot.com",
     messagingSenderId: "305974368757"
-  }
-firebase.initializeApp(config);
+  };
+// firebase.initializeApp(config);
 
-window.onload = page1();
-// firebase
+// window.onload = viewLogin();
+
+// const init = () => {
+//   window.addEventListener('hashchange', () => console.log(window.location.hash))
+// }
+
+// window.addEventListener('load', init);
+firebase.initializeApp(config);
+initRouter();
+});

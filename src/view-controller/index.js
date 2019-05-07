@@ -1,65 +1,78 @@
 // aqui exportaras las funciones que necesites
-import {activeUserPage, page1} from '../view/template.js';
+import {viewFeed} from '../view/viewFeed.js';
+import { viewLogin } from '../view/viewLogIn.js';
 
-//salir
-export const exit = () => firebase.auth().signOut()
-.then(()=> {
-  // Sign-out successful.
-  page1();
-}).catch((error) =>{
-  // An error happened.
-});
+//Cerrar sesión
+export const exit = () => {
+  firebase.auth().signOut()
+};
+// .then(()=> {
+//   // Sign-out successful.
+//   //viewLogin();
+// }).catch((error) =>{
+//   // An error happened.
+// });
 
-//rcrear cuenta
+//Crear usuario
 export const createUser = (emailSignIn, passwordSignIn) => {
   firebase.auth().createUserWithEmailAndPassword(emailSignIn, passwordSignIn)
-    .then((result) => {
-      console.log(result);
-    })
-    .catch((error)=>{
-      alert("no se realizado la autenticacion");
-      console.log(error);
-    })
+    // .then((result) => {
+    //   console.log(result);
+    // })
+    // .catch((error)=>{
+    //   alert("no se realizado la autenticacion");
+    //   console.log(error);
+    // })
 };
 
 //acceder con gmail y contraseña
 export const signInUser = (emailLogIn, passwordLogIn) => {
   return firebase.auth().signInWithEmailAndPassword(emailLogIn, passwordLogIn)
 };
-//usuario con sesion activa
+//usuario con sesion activa - muestra info del usuario registrado
 export const userSesionActive = () => {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
-      console.log("logeado")
-      activeUserPage(user);
+      viewFeed(user)
     } else {
       console.log("no logeado")
     }
   });
 };
+// export const userSesionActive = (changeRoute) => {
+//   return firebase.auth().onAuthStateChanged((user) => {
+//     if (user) {
+//       viewFeed(user);
+//       changeRoute('#/profile');
+      
+//     } else {
+//       changeRoute('#/login');
+//     }
+//   });
+// };
 //iniciar con google
 export const googleLogin = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup(provider)
-  .then(result => {
-    alert ('exito');
-    console.log(result);
-	})
-	.catch(error => {
-    alert('error')
-		console.log(error);
-	});
+  return firebase.auth().signInWithPopup(provider)
+//   .then(result => {
+//     alert ('exito');
+//     console.log(result);
+// 	})
+// 	.catch(error => {
+//     alert('error')
+// 		console.log(error);
+// 	});
 };
 //iniciar confabcebook
 export const facebookLogin = () => {
   var provider = new firebase.auth.FacebookAuthProvider();
   firebase.auth().signInWithPopup(provider)
-  .then(result => {
-    alert ('exito');
-    console.log(result);
-	})
-	.catch(error => {
-    alert(error)
-		console.log(error);
-	});
+  // .then(result => {
+  //   alert ('exito');
+  //   console.log(result);
+	// })
+	// .catch(error => {
+  //   alert(error)
+	// 	console.log(error);
+	// });
 };
