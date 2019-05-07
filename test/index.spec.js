@@ -12,7 +12,7 @@ global.firebase = firebasemock.MockFirebaseSdk(
   () => mockfirestore
 );
 
-import { exit, createUser, signInUser, googleLogin, facebookLogin  } from "../view-controller/index.js";
+import { exit, createUser, signInUser, googleLogin, facebookLogin  } from "../src/view-controller/index.js";
 
 describe('cerrar sesion', () => {
   it('debería ser una función', () => {

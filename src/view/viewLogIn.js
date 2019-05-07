@@ -79,8 +79,8 @@ export const viewLogin = () => {
     loginGoogle.addEventListener('click', e => {
       e.preventDefault();
       googleLogin()
-        // .then(() => changeHash('#/profile'))
-        // .catch((error) => console.log(error));
+        .then(() => changeHash('#/profile'))
+        .catch((error) => console.log(error));
     });
     return div;
 }

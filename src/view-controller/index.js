@@ -53,7 +53,7 @@ export const userSesionActive = () => {
 //iniciar con google
 export const googleLogin = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup(provider)
+  return firebase.auth().signInWithPopup(provider)
 //   .then(result => {
 //     alert ('exito');
 //     console.log(result);
