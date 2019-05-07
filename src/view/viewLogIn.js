@@ -1,8 +1,12 @@
 import {facebookLogin,googleLogin,createUser,userSesionActive,signInUser, exit} from '../view-controller/index.js'
 import { viewRegister } from "../view/viewRegister.js";
 
+const changeHash = (hash) =>  {
+  location.hash = hash;
+}
+
 export const viewLogin = () => {
-    const content = document.getElementById('content');
+    const div= document.createElement('div')
     const loginPage = `  
       <div id="login-container">
         <figure>
@@ -19,15 +23,15 @@ export const viewLogin = () => {
                 <a id="googleBtn"><img src="../images/search.svg" alt="Google" style="width:30px;"></img></a>
                 <a id="fbBtn"><img src="../images/facebook-logo-in-circular-button-outlined-social-symbol.svg" alt="Facebook" style="width:30px;"></img></a>
             </form>
-          <p class="m-auto">¿No tienes una cuenta? <a id="myBtn" class="register" href="#">Regístrate.</a></p>
+          <p class="m-auto">¿No tienes una cuenta? <a id="myBtn" class="register" href="#/register">Regístrate.</a></p>
         </div>
       </div>`;
-    content.innerHTML = loginPage;
+    div.innerHTML = loginPage;
 
-    const register = document.getElementById('myBtn');
-    register.addEventListener('click',  () => {
-      viewRegister();
-    });
+    // const register = div.querySelector('#myBtn');
+    // register.addEventListener('click',  () => {
+    //   viewRegister();
+    // });
       /*
     const registerUserOk = () => {
       const btnRegisterEmail = document.getElementById('register-btn');
@@ -49,24 +53,34 @@ export const viewLogin = () => {
 
     */
   
-    const btnLogInEmail = document.getElementById('login-btn');
-    const emailLogInEmail = document.getElementById('email-login');
-    const passwordLogInEmail = document.getElementById('password-login');
+    const btnLogInEmail = div.querySelector('#login-btn');
+    const emailLogInEmail = div.querySelector('#email-login');
+    const passwordLogInEmail = div.querySelector('#password-login');
     btnLogInEmail.addEventListener('click', (event) => {
       event.preventDefault();
-      signInUser(emailLogInEmail.value, passwordLogInEmail.value);
+      signInUser(emailLogInEmail.value, passwordLogInEmail.value)
+      .then(() => changeHash('#/profile'))
+      .catch((error) => console.log(error));
+
     });
-    userSesionActive();
+     userSesionActive()
+     
   
-    const loginFacebook = document.getElementById('fbBtn');
+    const loginFacebook = div.querySelector('#fbBtn');
     loginFacebook.addEventListener('click', e => {
       e.preventDefault();
-      facebookLogin();
+      facebookLogin()
+      .then(() => changeHash('#/profile'))
+      .catch((error) => console.log(error));
+
     })
   
-    const loginGoogle = document.getElementById('googleBtn');
+    const loginGoogle = div.querySelector('#googleBtn');
     loginGoogle.addEventListener('click', e => {
       e.preventDefault();
-      googleLogin();
+      googleLogin()
+        // .then(() => changeHash('#/profile'))
+        // .catch((error) => console.log(error));
     });
+    return div;
 }

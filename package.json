@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
-    "@babel/plugin-transform-modules-commonjs": "^7.4.3",
+    "@babel/plugin-transform-modules-commonjs": "^7.4.4",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "eslint": "^5.10.0",
@@ -24,5 +24,8 @@
     "htmlhint": "^0.10.1",
     "jest": "^23.6.0",
     "regenerator-runtime": "^0.13.1"
+  },
+  "dependencies": {
+    "latest": "^0.2.0"
   }
 }
