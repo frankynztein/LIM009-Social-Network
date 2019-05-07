@@ -19,8 +19,10 @@ export const viewFeed = () => {
                     <small class="profile-name">${user.displayName}</small>
                 </div>
                 <div class="feed-comment">
-                    <input type="text" class="input-comment" size="50" placeholder="¿Qué quieres compartir?">
-                    <button class="d-block btn-share-feed">Compartir</button>
+                    <form id="form-message">
+                        <input type="text" class="input-comment" size="50" placeholder="¿Qué quieres compartir?" id="message">
+                        <button class="d-block btn-share-feed" type="submit>Compartir</button>
+                    </form>
                 </div>
             </div>
         </div>

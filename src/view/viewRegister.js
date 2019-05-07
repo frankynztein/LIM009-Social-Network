@@ -17,14 +17,14 @@ export const viewRegister = () => {
     login.appendChild(div);
 
     const registerUserOk = () => {
-        const btnRegisterEmail = document.getElementById('register-btn');
+        // const btnRegisterEmail = document.getElementById('register-btn');
         const emailSignIn = document.getElementById('email-signup');
         const passwordSignIn = document.getElementById('password-signup');
+        createUser(emailSignIn.value, passwordSignIn.value);
     
-        btnRegisterEmail.addEventListener('click', (event) => {
-          event.preventDefault();
-          createUser(emailSignIn.value, passwordSignIn.value);
-        });
+        // btnRegisterEmail.addEventListener('click', (event) => {
+        //   event.preventDefault();
+        // });
       }
     
       const btnRegister = document.getElementById('register-btn');
@@ -32,4 +32,4 @@ export const viewRegister = () => {
         e.preventDefault();
         registerUserOk();
       });
-  };
+    };
