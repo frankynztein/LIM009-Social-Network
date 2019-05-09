@@ -4,8 +4,8 @@ const changeHash = (hash) =>  {
   location.hash = hash;
 }
 export const viewRegister = () => {
-  const div= document.createElement('div')
-  div.innerHTML = '';
+  const root= document.getElementById('content');
+  root.innerHTML = '';
   const register =`
       <form>
         <input type="text" id="name-signup" placeholder="Nombre">
@@ -16,11 +16,11 @@ export const viewRegister = () => {
         <button id="regresarLogin"><a href="#/login">Regresar</a></button>
         
       </form> `;
-    div.innerHTML = register;
+      root.innerHTML = register;
 
-        const btnRegisterEmail = div.querySelector('#register-btn');
-        const emailSignUp = div.querySelector('#email-signup');
-        const passwordSignUp = div.querySelector('#password-signup');
+        const btnRegisterEmail = root.querySelector('#register-btn');
+        const emailSignUp = root.querySelector('#email-signup');
+        const passwordSignUp = root.querySelector('#password-signup');
     
         btnRegisterEmail.addEventListener('click', (event) => {
           event.preventDefault();
@@ -28,18 +28,6 @@ export const viewRegister = () => {
           changeHash('#/profile');
         });
         userSesionActive();
-      
-    
-  //     const btnRegister = div.querySelector('#register-btn');
-  //     btnRegister.addEventListener('click', (e) => {
-  //       e.preventDefault();
-  //       registerUserOk()
-  //     //   .then(()=> {
-  //     //     // registerUserinFirestore(nameToSave,email)
-  //     //     alert('Verifica tu correo e ingresa')
-  //     // })
-  //     // .then(() => exit())
-  // });
-    
-      return div;
+ 
+      return root;
   };

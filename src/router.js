@@ -1,6 +1,7 @@
 import {viewLogin} from './view/viewLogIn.js';
 import {viewRegister} from './view/viewRegister.js';
 import {viewFeed} from './view/viewFeed.js';
+import { userSesionActive } from './view-controller/index.js';
 
 const changeTmp = (hash) => {
     if (hash === '#/' || hash === '' || hash === '#') {
@@ -18,18 +19,13 @@ const viewTmp = (routers) => {
     console.log(router)
     root.innerHTML = '';
     switch (router) {
-      case 'login':
-          root.innerHTML = '';        
-          root.appendChild(viewLogin());  
+      case 'login':viewLogin();  
         break;
-      case 'register':
-        root.appendChild(viewRegister());
+      case 'register':viewRegister();
         break;
-      case 'profile':
-        root.appendChild(viewFeed());
+      case 'profile': userSesionActive();
         break;
-      default:
-        root.appendChild(viewLogin());
+      default:viewLogin();
         break;
     }
   }
