@@ -6,7 +6,7 @@ const changeHash = (hash) =>  {
 }
 
 export const viewLogin = () => {
-    const div= document.createElement('div')
+    const root= document.getElementById('content')
     const loginPage = `  
       <div id="login-container">
         <figure>
@@ -26,47 +26,20 @@ export const viewLogin = () => {
           <p class="m-auto">¿No tienes una cuenta? <a id="myBtn" class="register" href="#/register">Regístrate.</a></p>
         </div>
       </div>`;
-    div.innerHTML = loginPage;
-
-    // const register = div.querySelector('#myBtn');
-    // register.addEventListener('click',  () => {
-    //   viewRegister();
-    // });
-      /*
-    const registerUserOk = () => {
-      const btnRegisterEmail = document.getElementById('register-btn');
-      const emailSignIn = document.getElementById('email-signup');
-      const passwordSignIn = document.getElementById('password-signup');
+    root.innerHTML = loginPage;
   
-      btnRegisterEmail.addEventListener('click', (event) => {
-        event.preventDefault();
-        createUser(emailSignIn.value, passwordSignIn.value);
-      });
-    }
-  
-    const btnRegister = document.getElementById('myBtn');
-    btnRegister.addEventListener('click', e => {
-      e.preventDefault();
-      viewRegister();
-      registerUserOk();
-    });
-
-    */
-  
-    const btnLogInEmail = div.querySelector('#login-btn');
-    const emailLogInEmail = div.querySelector('#email-login');
-    const passwordLogInEmail = div.querySelector('#password-login');
+    const btnLogInEmail = root.querySelector('#login-btn');
+    const emailLogInEmail = root.querySelector('#email-login');
+    const passwordLogInEmail = root.querySelector('#password-login');
     btnLogInEmail.addEventListener('click', (event) => {
       event.preventDefault();
       signInUser(emailLogInEmail.value, passwordLogInEmail.value)
       .then(() => changeHash('#/profile'))
       .catch((error) => console.log(error));
-
     });
-     userSesionActive()
      
-  
-    const loginFacebook = div.querySelector('#fbBtn');
+     
+    const loginFacebook = root.querySelector('#fbBtn');
     loginFacebook.addEventListener('click', e => {
       e.preventDefault();
       facebookLogin()
@@ -75,12 +48,12 @@ export const viewLogin = () => {
 
     })
   
-    const loginGoogle = div.querySelector('#googleBtn');
+    const loginGoogle = root.querySelector('#googleBtn');
     loginGoogle.addEventListener('click', e => {
       e.preventDefault();
       googleLogin()
         .then(() => changeHash('#/profile'))
         .catch((error) => console.log(error));
     });
-    return div;
+    return root;
 }
