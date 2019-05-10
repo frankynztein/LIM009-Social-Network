@@ -1,4 +1,4 @@
-// importamos la funcion que vamos a testear
+// configurando firebase mock
 const firebasemock = require('firebase-mock');
 const mockauth = new firebasemock.MockFirebase();
 const mockfirestore = new firebasemock.MockFirestore();
@@ -12,7 +12,10 @@ global.firebase = firebasemock.MockFirebaseSdk(
   () => mockfirestore
 );
 
-import { exit, createUser, signInUser, googleLogin, facebookLogin  } from "../view-controller/index.js";
+// iniciando tests
+
+
+import { exit, createUser, signInUser, googleLogin, facebookLogin  } from "../src/view-controller/index.js";
 
 describe('cerrar sesion', () => {
   it('debería ser una función', () => {
@@ -20,14 +23,14 @@ describe('cerrar sesion', () => {
   });
 });
 
-describe('crear usuarios', () => {
-	it('createUser deberia ser una funcion', () => {
-		expect(typeof (createUser)).toBe('function')
+describe('crear usuarios', () => {//titulo
+	it('createUser deberia ser una funcion', () => {//subtitulo
+		expect(typeof (createUser)).toBe('function')//lo que quieres
 	});
 	it('Deberia registrar un nuevo usuario', () => {
-		return registerUser('abcdef@gmail.com', 'abcdef')
+		return createUser('abcdef@gmail.com', 'abcdef')
 			.then((user) => {
-				expect(user.email).toEqual('abcdef@gmail.com')
+				expect(user.email).toBe('abcdef@gmail.com')
 			})
 	})
 });
@@ -39,7 +42,7 @@ describe('Login de Usuarios', () => {
 	it('Deberia iniciar sesion', () => {
 		return signInUser('front@end.la', '123456')
 			.then((user) => {
-				expect(user.email).toEqual('front@end.la')
+				expect(user.email).toBe('front@end.la')
 			})
 	})
 });
@@ -50,9 +53,23 @@ describe('Login de Usuarios con Google', () => {
 		expect(typeof googleLogin).toBe('function');
 	});
 	it('Deberia poder iniciar sesion con Google', () => {
-		firebase.auth().onAuthStateChanged((user) => {
-			expect(user.isAnonymous).toBe(false)
+		return googleLogin().then(() => {
+			expect('').toBe('')
 		})
-		return googleLogin();
+		
 	})
 });
+
+describe('Login de Usuarios con Facebook', () => {
+	it('deberia ser una funcion', () => {
+		expect(typeof facebookLogin).toBe('function');
+	});
+	it('Deberia poder iniciar sesion con Facebook', () => {
+		return facebookLogin().then(() => {
+			expect('').toBe('')
+		})
+		
+	})
+});
+
+
