@@ -64,7 +64,7 @@ describe('Login de Usuarios con Facebook', () => {
 	it('deberia ser una funcion', () => {
 		expect(typeof facebookLogin).toBe('function');
 	});
-	it('Deberia poder iniciar sesion con Google', () => {
+	it('Deberia poder iniciar sesion con Facebook', () => {
 		return facebookLogin().then(() => {
 			expect('').toBe('')
 		})
