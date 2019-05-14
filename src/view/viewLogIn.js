@@ -13,7 +13,7 @@ export const viewLogin = () => {
             <img class="s-size b-size" src="../images/undraw_chef_lbjx.svg" alt="">
         </figure>
         <div id='login'>
-          <h1 class="center">FoodBook</h1>
+          <img class="center"<img src= 'https://i.postimg.cc/qqcT99rV/foodbook-logo.png'>
           <h3 class="center">¡Bienvenido, comensal!</h3>
             <form id="login-user">
                 <input class="d-block input-w" type="email" id="email-login" placeholder="Email">
@@ -57,3 +57,18 @@ export const viewLogin = () => {
     });
     return root;
 }
+
+//funcion que nos recomendo Mariano
+// const getUserWhenReady=(callback)=>{
+//   if (firebase.auth.currentUser){ callback(currentUser)}
+//   else{
+//    const unSucribe = firebase.auth().onAuthStateChanged((user)=>{
+//      if (user){
+//        callback (user)
+//      }else{
+//        callback(null)
+//      }
+//    })
+//    unSucribe(); 
+//   }
+// }
