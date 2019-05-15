@@ -1,4 +1,5 @@
-import { exit} from "../view-controller/index.js";
+import { exit } from "../view-controller/index.js";
+import { saveFeed, viewFeedDb } from "../view-controller/feed.js";
 
 // export const viewFeed = (user) => {
 //     const content = document.getElementById('content');
@@ -46,17 +47,32 @@ import { exit} from "../view-controller/index.js";
 //             //.catch((error) => console.log(error));
         
 //         });
+
        
 export const viewFeed = (user) => {
     const root = document.getElementById('content');
     const feedPage = `
-        <img src= 'https://i.postimg.cc/qqcT99rV/foodbook-logo.png'>
-        <button id="exit"><a href="#/login">Cerrar sesión</a></button>
-        <p>Bienvenidx ${user.displayName}</p>
+        <header>
+            <p>Bienvenidx ${user.displayName}</p>
+            <img src= 'https://i.postimg.cc/rpPnvrL1/fbook.png' width= 200px height=50px>
+            <button id="exit"><a href="#/login">Cerrar sesión</a></button>        
+        </header>
         <p>Email: ${user.email}<p>
         <figure><img src="${user.photoURL}" alt="foto"></figure>
-        <textarea id="text-coment" placeholder=""escribe tu comentario"></textarea>
-        <button id="btn-comentar">comentar</button>
+        <select>
+            <option>Visualización</option>    
+            <option value="private">Privado</option>
+            <option value="public">Público</option>
+        </select>
+        <form id ='form-post'>
+            <label>¿Que quieres compartir?</label>
+            <textarea id="text-coment"></textarea>
+            <div>
+                <button id="btn-publicar">publicar</button>
+            </div>
+        </form>
+        <section id="post-container">
+        </section>
         `;
         root.innerHTML = feedPage;
 
@@ -65,45 +81,34 @@ export const viewFeed = (user) => {
         console.log("salir");    
         exit() 
     });
-    const btnComent= root.querySelector("#btn-comentar");
-    btnComent.addEventListener('click',()=>{
-        root.querySelector("#text-coment").value;
+    //crear post
+    const btnComent= root.querySelector("#btn-publicar");
+    btnComent.addEventListener('click', () => {        
+        let textcoment = root.querySelector("#text-coment").value;
+        let visuality = 'public';
+        saveFeed(textcoment, visuality, user);
     })
-        
-    
-return root;
+    //leer post
+    listFeed(root)
+
+    return root;
 }
   
-// export const viewFeed = (user) => {
-//     const root = document.getElementById('content');
-//     const feedPage = `
-// <header>
-// <ul>
-//     <li>Bienvenida<a> ${user.displayName}</a>
-//         <ul>
-//             <li><a>Configurar cuenta</a></li>
-//             <li><a>Editar Perfil</a></li>
-//         </ul>
-//     </li>
-//     <li><img src= 'https://i.postimg.cc/qqcT99rV/foodbook-logo.png'></li>
-//     <li id="exit"><a href="#/login">Cerrar sesión</a></li>
-// </ul>
-// </header>
-//     <div>
-//         <div img src="${user.photoURL}"></div>
-//             <div>
-//                 <h2>${user.displayName}</h2><p>${user.email}</p>
-//             </div>
-//         </div>
-//     </div>
-// `;
-//         root.innerHTML = feedPage;
+export const listFeed = (root) => {    
+    viewFeedDb((posts) => {        
+        let html = ""
+        posts.forEach(element => {
+            let child = `<div class='feed'>${element.description}</div>`;
+            html += child;
+        });
+        root.querySelector('#post-container').innerHTML = html;
+        
+        // root.innerHTML = "";
+        // root.appendChild(showActUser({
+        //     ...user,
+        //     name,
+        // }, posts))
+    })
 
-//           const btnExit = root.querySelector('#exit');
-//             btnExit.addEventListener('click', () => {
-//             console.log("salir");    
-//              exit() 
-//     });
-//     return root;
-// }
+}
 

@@ -11,13 +11,9 @@ body {
   #login-container {
     width: 100%;
     display: flex;
-    /* height: 640px; */
-    /* flex-flow: column nowrap; */
     flex-direction: column;
-    /* flex-wrap: nowrap; */
     align-items: center;
     justify-content: center;
-    /* align-content: center; */
     text-align: center;
     
   }
@@ -43,7 +39,7 @@ body {
   .btn-login {
     color: white;
     font-weight: bold;
-    background-color: #878383;
+    background-color: #F29A53;
   }
 
   .input-w {
@@ -74,19 +70,14 @@ body {
 
   #login-container {
     display: flex;
-    /* height: 640px; */
     flex-flow: row nowrap;
-    /* flex-direction: row; */
-    /* flex-wrap: nowrap; */
     align-items: center;
     justify-content: space-evenly;
-    /* align-content: center; */
   }
 
   .feed-container {
     display: flex;
     flex-flow: row nowrap;
-    /* align-items: center; */
     justify-content: center;
     margin: 10px;
     border: blue solid 1px;
@@ -146,4 +137,14 @@ body {
     align-self: flex-end;
     
   }
+}
+.fondo-login{
+  background-image: url('../../images/bg.png');
+  background-size: cover;
+}
+header{
+  display:flex;
+  justify-content:space-between;
+  background: #4BC1B0;
+  padding: 15px
 }
