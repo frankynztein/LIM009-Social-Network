@@ -29,15 +29,14 @@ export const userSesionActive = () => {
 
 //iniciar con google
 export const googleLogin = () => {
-  const provider = new firebase.auth.GoogleAuthProvider();
-  return firebase.auth().signInWithPopup(provider)
+  const providerGoogle = new firebase.auth.GoogleAuthProvider();
+  return firebase.auth().signInWithPopup(providerGoogle)
 };
 //iniciar confabcebook
 export const facebookLogin = () => {
   var provider = new firebase.auth.FacebookAuthProvider();
   return firebase.auth().signInWithPopup(provider)
 };
-
 
 
 //funcion que nos recomendo Mariano

@@ -1,43 +1,15 @@
-import {facebookLogin,googleLogin,createUser,userSesionActive,signInUser,exit} from '../view-controller/index.js'
+import {facebookLogin,googleLogin,createUser,userSesionActive,signInUser,exit} from '../controller/index.js'
 '../view/index.js'
+
 
 export const activeUserPage = (user) => {
   const content = document.getElementById('content');
   if (user != null) {
     let bienvenida = `
-      <div id="feed-container">
-        <div class="topnav" id="myTopnav">
-          <a href="#home" class="active">Hola, ${user.displayName}</a>
-          <a href="#news">News</a>
-          <a href="#contact">Contact</a>
-          <a href="#" id="exit">Cerrar sesión</a>
-          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-              <i class="fa fa-bars"></i>
-          </a>
-        </div>
-        <div class="feed-container">
-          <div class="feed-profile">
-            <figure class="circular-landscape">
-                <img src="${user.photoURL}" alt="Imagen de perfil." class="profile-img">
-            </figure>
-            <small class="profile-name">${user.displayName}</small>
-          </div>
-          <div class="feed-comment">
-            <input type="text" class="input-comment" size="50" placeholder="¿Qué quieres compartir?">
-            <button class="d-block btn-share-feed">Compartir</button>
-          </div>
-        </div>
-      </div>
-      <script>
-          function myFunction() {
-              var x = document.getElementById("myTopnav");
-              if (x.className === "topnav") {
-              x.className += " responsive";
-              } else {
-              x.className = "topnav";
-              }
-          }
-      </script>`;
+    <button id="exit">Cerrar sesión</button>
+    <p>Bienvenidx ${user.displayName}</p>
+    <p>Email: ${user.email}<p>
+    <figure><img src="${user.photoURL}" alt="foto"></figure>`;
     content.innerHTML = bienvenida;
 
     const btnExit = document.getElementById('exit');
@@ -47,33 +19,27 @@ export const activeUserPage = (user) => {
   }
 }
 
-
 export const page1 = () => {
-  /*
   const content = document.getElementById('content');
   const loginPage = `  
-    <div id="login-container">
-      <figure>
-        <img class="s-size b-size" src="../images/undraw_chef_lbjx.svg" alt="">
-      </figure>
-      <div id='login'>
-        <h1 class="center">FoodBook</h1>
-        <h3 class="center">¡Bienvenido, comensal!</h3>
-          <form id="login-user">
-              <input class="d-block input-w" type="email" id="email-login" placeholder="Email">
-              <input class="d-block input-w" type="password" id="password-login" placeholder="Password">
-              <button class="d-block btn-login btn-width" id="login-btn">Log in</button>
-              <p class="m-auto">O bien ingresa con...</p>
-              <a id="googleBtn"><img src="../images/search.svg" alt="Google" style="width:30px;"></img></a>
-              <a id="fbBtn"><img src="../images/facebook-logo-in-circular-button-outlined-social-symbol.svg" alt="Facebook" style="width:30px;"></img></a>
-          </form>
-        <p class="m-auto">¿No tienes una cuenta? <a id="myBtn" class="register" href="#">Regístrate.</a></p>
-      </div>
-    </div>`;
+  <figure>
+    <img src="../images/undraw_chef_lbjx.svg" alt="" style="width:300px;">
+  </figure>
+  <div id='login'>
+    <h1>FoodBook</h1>
+    <h3>¡Bienvenido, comensal!</h3>
+    <form id="login-user">
+      <input type="email" id="email-login" placeholder="Email">
+      <input type="password" id="password-login" placeholder="Password">
+      <button id="login-btn">Log in</button>
+      <p>O bien ingresa con...</p>
+      <button id="googleBtn"><img src="../images/search.svg" alt="Google" style="width:30px;"></img></button>
+      <button id="fbBtn"><img src="../images/facebook-logo-in-circular-button-outlined-social-symbol.svg" alt="Facebook" style="width:30px;"></img></button>
+    </form>
+    <p>¿No tienes una cuenta? <a id="myBtn" href="#">Regístrate.</a></p>
+  </div>`;
   content.innerHTML = loginPage;
 
-  */
-  /*
   const registerPage = () => {
     const login = document.getElementById('login')
     login.innerHTML = '';
@@ -84,27 +50,32 @@ export const page1 = () => {
         <input type="email" id="email-signup" placeholder="Email">
         <input type="password" id="password-signup" placeholder="Password">
         <button id="register-btn">Registrarse</button>
-        <button id="regresarHome"><img src="">Regresar</button>
+        <button id="regresarHome">Regresar</button>
       </form> `;
     const div = document.createElement('div')
     div.innerHTML = register;
     login.appendChild(div);
+    
+    document.getElementById('regresarHome').addEventListener('click',(e)=>{
+      e.preventDefault();
+      console.log("ok");
+      exit();
+    })
   };
-      */
 
   const registerUserOk = () => {
     const btnRegisterEmail = document.getElementById('register-btn');
     const emailSignIn = document.getElementById('email-signup');
     const passwordSignIn = document.getElementById('password-signup');
 
-    btnRegisterEmail.addEventListener('click', (event) => {
-      event.preventDefault();
+    btnRegisterEmail.addEventListener('click', (e) => {
+      e.preventDefault();
       createUser(emailSignIn.value, passwordSignIn.value);
     });
   }
-
+ 
   const btnRegister = document.getElementById('myBtn');
-  btnRegister.addEventListener('click', e => {
+  btnRegister.addEventListener('click', (e) => {
     e.preventDefault();
     registerPage();
     registerUserOk();
@@ -113,22 +84,22 @@ export const page1 = () => {
   const btnLogInEmail = document.getElementById('login-btn');
   const emailLogInEmail = document.getElementById('email-login');
   const passwordLogInEmail = document.getElementById('password-login');
-  btnLogInEmail.addEventListener('click', (event) => {
-    event.preventDefault();
+  btnLogInEmail.addEventListener('click', (e) => {
+    e.preventDefault();
     signInUser(emailLogInEmail.value, passwordLogInEmail.value);
   });
   userSesionActive();
 
   const loginFacebook = document.getElementById('fbBtn');
-  loginFacebook.addEventListener('click', e => {
+  loginFacebook.addEventListener('click', (e) => {
     e.preventDefault();
     facebookLogin();
   })
 
   const loginGoogle = document.getElementById('googleBtn');
-  loginGoogle.addEventListener('click', e => {
+  loginGoogle.addEventListener('click', (e) => {
     e.preventDefault();
     googleLogin();
   });
+  
 };
-//no se por que no se suben mis cambios a la rama de la dueña de repositorio

@@ -7,13 +7,14 @@ const changeHash = (hash) =>  {
 
 export const viewLogin = () => {
     const root= document.getElementById('content')
-    const loginPage = `  
+    const loginPage = `
+    <main class="fondo-login" >  
       <div id="login-container">
         <figure>
-            <img class="s-size b-size" src="../images/undraw_chef_lbjx.svg" alt="">
+           
         </figure>
         <div id='login'>
-          <h1 class="center">FoodBook</h1>
+          <img class="center"<img src= 'https://i.postimg.cc/rpPnvrL1/fbook.png'>
           <h3 class="center">¡Bienvenido, comensal!</h3>
             <form id="login-user">
                 <input class="d-block input-w" type="email" id="email-login" placeholder="Email">
@@ -25,7 +26,8 @@ export const viewLogin = () => {
             </form>
           <p class="m-auto">¿No tienes una cuenta? <a id="myBtn" class="register" href="#/register">Regístrate.</a></p>
         </div>
-      </div>`;
+      </div>
+      </main>`;
     root.innerHTML = loginPage;
   
     const btnLogInEmail = root.querySelector('#login-btn');
@@ -57,3 +59,4 @@ export const viewLogin = () => {
     });
     return root;
 }
+
