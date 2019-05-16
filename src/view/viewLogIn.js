@@ -20,8 +20,8 @@ export const viewLogin = () => {
                 <input class="d-block input-w" type="password" id="password-login" placeholder="Password">
                 <button class="d-block btn-login btn-width" id="login-btn">Log in</button>
                 <p class="m-auto">O bien ingresa con...</p>
-                <a id="googleBtn"><img src="../images/search.svg" alt="Google" style="width:30px;"></img></a>
-                <a id="fbBtn"><img src="../images/facebook-logo-in-circular-button-outlined-social-symbol.svg" alt="Facebook" style="width:30px;"></img></a>
+                <a id="googleBtn" class="google-btn"><img src="../images/search.svg" alt="Google" style="width:30px;"></img></a>
+                <a id="fbBtn" class="facebook-btn"><img src="../images/facebook-logo-in-circular-button-outlined-social-symbol.svg" alt="Facebook" style="width:30px;"></img></a>
             </form>
           <p class="m-auto">¿No tienes una cuenta? <a id="myBtn" class="register" href="#/register">Regístrate.</a></p>
         </div>

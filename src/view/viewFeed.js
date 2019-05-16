@@ -47,20 +47,33 @@ import { exit } from "../view-controller/index.js";
         
 //         });
        
-    export const viewFeed = (user) => {
-        const root = document.getElementById('content');
-        const feedPage = `
+export const viewFeed = (user) => {
+    const root = document.getElementById('content');
+    const feedPage =
+    `<div class="feed-container">
         <button id="exit"><a href="#/login">Cerrar sesión</a></button>
-        <p>Bienvenidx ${user.displayName}</p>
-        <p>Email: ${user.email}<p>
-        <figure><img src="${user.photoURL}" alt="foto"></figure>`;
-        root.innerHTML = feedPage;
-
-          const btnExit = root.querySelector('#exit');
-            btnExit.addEventListener('click', () => {
-            console.log("salir");    
-             exit()
+        <div class="feed-profile">
+            <figure class="circular-landscape">
+                <img src="${user.photoURL}" alt="Imagen de perfil." class="profile-img">
+            </figure>
+            <small class="profile-name">${user.displayName}</small>
+        </div>
+        <div class="feed-comment">
+            <input type="text" class="input-comment" size="50" placeholder="¿Qué quieres compartir?">
+            <button class="d-block btn-share-feed">Compartir</button>
+        </div>
+    </div>`;
+    // `<button id="exit"><a href="#/login">Cerrar sesión</a></button>
+    // <p>Bienvenidx ${user.displayName}</p>
+    // <p>Email: ${user.email}<p>
+    // <figure><img src="${user.photoURL}" alt="foto"></figure>`;
+    root.innerHTML = feedPage;
     
+    const btnExit = root.querySelector('#exit');
+    btnExit.addEventListener('click', () => {
+        console.log("salir");    
+        exit()
+        
     });
     return root;
 }

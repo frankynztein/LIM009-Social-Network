@@ -3,6 +3,11 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+button, .google-btn, .facebook-btn {
+  cursor: pointer;
+}
+
+
 @media (min-width: 360px) {
   body {
     background-color:#ffff99;

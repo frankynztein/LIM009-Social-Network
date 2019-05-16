@@ -8,8 +8,7 @@ export const viewRegister = () => {
   root.innerHTML = '';
   const register =`
       <form>
-        <input type="text" id="name-signup" placeholder="Nombre">
-        <input type="text" id="lastName-signup" placeholder="Apellido">
+        <input type="text" id="name-signup" placeholder="Usuario">
         <input type="email" id="email-signup" placeholder="Email">
         <input type="password" id="password-signup" placeholder="Password">
         <button id="register-btn">Registrarse</button>
@@ -21,10 +20,13 @@ export const viewRegister = () => {
         const btnRegisterEmail = root.querySelector('#register-btn');
         const emailSignUp = root.querySelector('#email-signup');
         const passwordSignUp = root.querySelector('#password-signup');
-    
+        const nameSignUp = root.querySelector('#name-signup');
+        
+        
         btnRegisterEmail.addEventListener('click', (event) => {
           event.preventDefault();
-          createUser(emailSignUp.value, passwordSignUp.value)
+          console.log(nameSignUp.value);
+          createUser(emailSignUp.value, passwordSignUp.value, nameSignUp.value)
           changeHash('#/profile');
         });
         userSesionActive();
