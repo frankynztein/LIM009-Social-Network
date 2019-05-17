@@ -272,7 +272,12 @@ body {
     text-decoration: none;
     margin-top: 4px;
   }
-<<<<<<< HEAD
+
+  .talkbubble:hover {
+    color: #FF2F22;
+    font-weight: bold;
+    background-color: white;
+  }
 }
 
 /* NAVBAR */
@@ -326,36 +331,11 @@ body {
     display: block;
     text-align: left;
   }
-=======
-  /* .talkbubble:before {
-    content: "";
-    position: absolute;
-    right: 100%;
-    top: 26px;
-    width: 0;
-    height: 0;
-    border-top: 13px solid transparent;
-    border-bottom: 13px solid transparent;
-  } */
-
-  .talkbubble:hover {
-    color: #FF2F22;
-    font-weight: bold;
-    background-color: white;
-  }
 }
 
 header{
-<<<<<<< HEAD
   display: flex;
   justify-content: space-between;
-  background: #4BC1B0;
-  padding: 15px
->>>>>>> bdab51b4f8e4451f3ba36d35837aba79587310db
-}
-=======
-  display:flex;
-  justify-content:space-between;
   background: #B3EBE6;
   padding: 15px
 }
@@ -392,5 +372,3 @@ textarea{
   padding: 3px;
  
 }
-  
->>>>>>> dc70d922cb7171894f3432423fa69c29b0ea8a1e
