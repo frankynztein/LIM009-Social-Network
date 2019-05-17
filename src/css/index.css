@@ -296,3 +296,16 @@ header{
   background: #4BC1B0;
   padding: 15px
 }
+table{
+  border: 1px solid;
+  margin: 5px;
+  width: 40%;
+}
+.archivo {
+  
+  overflow: hidden;
+  }
+  #file {
+  background-image: url("../../images/picture.svg");
+ 
+  }

@@ -59,16 +59,20 @@ export const viewFeed = (user) => {
         </header>
         <p>Email: ${user.email}<p>
         <figure><img src="${user.photoURL}" alt="foto"></figure>
-        <select>
-            <option>Visualización</option>    
-            <option value="private">Privado</option>
-            <option value="public">Público</option>
-        </select>
+      
         <form id ='form-post'>
-            <label>¿Que quieres compartir?</label>
-            <textarea id="text-coment"></textarea>
+            
+            <input  type="text" id="text-coment" placeholder="Que quieres compartir">
             <div>
-                <button id="btn-publicar">publicar</button>
+            <input type="file" value="upload" id="fileButton">
+            
+                <button id="btn-publicar">Compartir</button>
+                <select>
+                <option>Visualización</option>    
+                <option value="private">Privado</option>
+                <option value="public">Público</option>
+            </select>
+                
             </div>
         </form>
         <section id="post-container">
@@ -76,30 +80,70 @@ export const viewFeed = (user) => {
         `;
         root.innerHTML = feedPage;
 
+
+        
     const btnExit = root.querySelector('#exit');
     btnExit.addEventListener('click', () => {
         console.log("salir");    
         exit() 
+
     });
+
+
+
+
+
+
+
+
+
     //crear post
     const btnComent= root.querySelector("#btn-publicar");
     btnComent.addEventListener('click', () => {        
         let textcoment = root.querySelector("#text-coment").value;
         let visuality = 'public';
+  
         saveFeed(textcoment, visuality, user);
     })
+
+
     //leer post
     listFeed(root)
 
     return root;
+
+
+
 }
   
 export const listFeed = (root) => {    
     viewFeedDb((posts) => {        
         let html = ""
+      
         posts.forEach(element => {
-            let child = `<div class='feed'>${element.description}</div>`;
-            html += child;
+       let child = `<table class='feed'>
+     <thead>
+      <tr>
+        <th >${element.uid}</th>
+        <th> <a><img src="../images/eliminar.svg" alt="Eliminar" style="width:10px;" onclick="eliminar('${element.uid}')"></img></a></th>
+     </tr>
+    </thead>
+    <tbody >
+     <tr>
+       <td></td>
+       <td>${element.description}</td>
+     </tr>
+     <tr>
+       <td> <a><img src="../images/like.svg" alt="Like" style="width:30px;" onclick="like('${element.uid}','${element.description}')"></img></a></td>
+       <td><a><img src="../images/editar.svg" alt="Editar" style="width:30px;"onclick="editar('${element.uid}','${element.description}')"></img></a></td>
+    </tr>
+    </tbody>
+  </table>
+  
+`;
+
+            
+     html += child;
         });
         root.querySelector('#post-container').innerHTML = html;
         
@@ -112,3 +156,5 @@ export const listFeed = (root) => {
 
 }
 
+
+    
