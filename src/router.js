@@ -19,13 +19,13 @@ const viewTmp = (routers) => {
     console.log(router)
     root.innerHTML = '';
     switch (router) {
-      case 'login':viewLogin();  
+      case 'login': viewLogin();  
         break;
-      case 'register':viewRegister();
+      case 'register': viewRegister();
         break;
       case 'profile': userSesionActive();
         break;
-      default:viewLogin();
+      default: viewLogin();
         break;
     }
   }

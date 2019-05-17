@@ -1,24 +1,17 @@
 // Este es el punto de entrada de tu aplicacion
 import { initRouter } from './router.js';
 
-window.addEventListener('load', ()=>{
-var config ={
+window.addEventListener('load', () => {  
+  var config ={
     apiKey: "AIzaSyDhPzlMom9mAEcuyk_Dw05NY2awAH_zYAU",
     authDomain: "red-social-58567.firebaseapp.com",
     databaseURL: "https://red-social-58567.firebaseio.com",
     projectId: "red-social-58567",
     storageBucket: "red-social-58567.appspot.com",
-    messagingSenderId: "305974368757"
+    messagingSenderId: "305974368757",
+    appId: "1:305974368757:web:1024756010c9ad41"
   };
-// firebase.initializeApp(config);
 
-// window.onload = viewLogin();
-
-// const init = () => {
-//   window.addEventListener('hashchange', () => console.log(window.location.hash))
-// }
-
-// window.addEventListener('load', init);
-firebase.initializeApp(config);
-initRouter();
+  firebase.initializeApp(config);
+  initRouter();
 });
