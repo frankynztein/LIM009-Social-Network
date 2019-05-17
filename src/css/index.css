@@ -145,6 +145,40 @@ body {
 header{
   display:flex;
   justify-content:space-between;
-  background: #4BC1B0;
+  background: #B3EBE6;
   padding: 15px
 }
+.info-profile{
+  display: flex;
+  flex-direction: center;
+  width: 50%;
+  margin: 0 auto
+}
+.select{
+  width: min-content;
+  margin: 8px
+}
+textarea{
+  height:80px;
+  margin: 8px
+}
+.form-post{
+  background-color: #efefef75;
+  border: 1px solid #d2d5d6;
+  display: flex;
+  padding: 9px;
+  border-radius: 5px;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto
+}
+.feed{
+  width: 50%;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid blue;
+  padding: 3px;
+ 
+}
+  

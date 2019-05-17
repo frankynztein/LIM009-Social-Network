@@ -55,22 +55,25 @@ export const viewFeed = (user) => {
         <header>
             <p>Bienvenidx ${user.displayName}</p>
             <img src= 'https://i.postimg.cc/rpPnvrL1/fbook.png' width= 200px height=50px>
-            <button id="exit"><a href="#/login">Cerrar sesión</a></button>        
+            <p id="exit"><a href="#/login">Cerrar sesión</a></p>        
         </header>
-        <p>Email: ${user.email}<p>
-        <figure><img src="${user.photoURL}" alt="foto"></figure>
-        <select>
-            <option>Visualización</option>    
-            <option value="private">Privado</option>
-            <option value="public">Público</option>
-        </select>
-        <form id ='form-post'>
+        <div class="info-profile">
+            <p>Email: ${user.email}<p>
+            <figure><img src="${user.photoURL}" width= 100px  height=100px alt="foto"></figure>
+        </div>
+        <div class="form-post" id ='form-post'>
+            <select class="select">
+                <option>Visualización</option>    
+                <option value="private">Privado</option>
+                <option value="public">Público</option>
+            </select>
             <label>¿Que quieres compartir?</label>
             <textarea id="text-coment"></textarea>
             <div>
+                <button id="btn-image">subir Foto</button>
                 <button id="btn-publicar">publicar</button>
             </div>
-        </form>
+        </div>
         <section id="post-container">
         </section>
         `;
@@ -96,9 +99,12 @@ export const viewFeed = (user) => {
   
 export const listFeed = (root) => {    
     viewFeedDb((posts) => {        
-        let html = ""
+        let html = "";
         posts.forEach(element => {
-            let child = `<div class='feed'>${element.description}</div>`;
+            let child = `<div class='feed'><p>${element.description}</p>
+            <p> ${element.id}</p><p> ${element.user}</p></div>`
+                            
+             
             html += child;
         });
         root.querySelector('#post-container').innerHTML = html;
