@@ -55,7 +55,7 @@ export const viewFeed = (user) => {
         <header>
             <p>Bienvenidx ${user.displayName}</p>
             <img src= 'https://i.postimg.cc/rpPnvrL1/fbook.png' width= 200px height=50px>
-            <button id="exit"><a href="#/login">Cerrar sesión</a></button>        
+            <a href="#/login" id="exit" class="talkbubble">Cerrar sesión</a>    
         </header>
         <p>Email: ${user.email}<p>
         <figure><img src="${user.photoURL}" alt="foto"></figure>

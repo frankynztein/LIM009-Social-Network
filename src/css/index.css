@@ -254,8 +254,39 @@ body {
     color: white;
     width: 25%;
     margin-top: 3%;
-    align-self: flex-end;
-    
+    align-self: flex-end;    
+  }
+
+  .talkbubble {
+    width: 120px;
+    height: 30px;
+    text-align: center;
+    background: #FF2F22;
+    position: relative;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    padding-top: 10px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 4px;
+  }
+  /* .talkbubble:before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: 26px;
+    width: 0;
+    height: 0;
+    border-top: 13px solid transparent;
+    border-bottom: 13px solid transparent;
+  } */
+
+  .talkbubble:hover {
+    color: #FF2F22;
+    font-weight: bold;
+    background-color: white;
   }
 }
 
