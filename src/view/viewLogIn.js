@@ -8,14 +8,20 @@ const changeHash = (hash) =>  {
 export const viewLogin = () => {
     const root= document.getElementById('content')
     const loginPage = `
-    <main class="fondo-login" >  
+    <main>  
       <div id="login-container">
-        <figure>
-           
+        <div class="row-login">
+          <div class="column-login">
+            <div class="column-login-image">
+                <figure>
+                    <img class="s-size b-size" src="../images/undraw_Bibliophile_hwqc.svg" alt="">
         </figure>
-        <div id='login'>
-          <img class="center"<img src= 'https://i.postimg.cc/rpPnvrL1/fbook.png'>
-          <h3 class="center">¡Bienvenido, comensal!</h3>
+        </div>
+        </div>
+        <div class="column-login">
+            <div id='login' class="column-login-login">
+                <img class="center" src= 'https://i.postimg.cc/rpPnvrL1/fbook.png'>
+                <h1 class="center">¡Bienvenido, comensal!</h1>
             <form id="login-user">
                 <input class="d-block input-w" type="email" id="email-login" placeholder="Email">
                 <input class="d-block input-w" type="password" id="password-login" placeholder="Password">
@@ -25,6 +31,8 @@ export const viewLogin = () => {
                 <a id="fbBtn"><img src="../images/facebook-logo-in-circular-button-outlined-social-symbol.svg" alt="Facebook" style="width:30px;"></img></a>
             </form>
           <p class="m-auto">¿No tienes una cuenta? <a id="myBtn" class="register" href="#/register">Regístrate.</a></p>
+          </div>
+          </div>
         </div>
       </div>
       </main>`;

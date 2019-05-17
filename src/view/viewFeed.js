@@ -90,11 +90,19 @@ export const viewFeed = (user) => {
     });
 
 
+
+
+
+
+
+
+
     //crear post
     const btnComent= root.querySelector("#btn-publicar");
     btnComent.addEventListener('click', () => {        
         let textcoment = root.querySelector("#text-coment").value;
         let visuality = 'public';
+  
         saveFeed(textcoment, visuality, user);
     })
 
@@ -111,49 +119,31 @@ export const viewFeed = (user) => {
 export const listFeed = (root) => {    
     viewFeedDb((posts) => {        
         let html = ""
+      
         posts.forEach(element => {
-            let child = `<table class='feed'>
-            <thead>
+       let child = `<table class='feed'>
+     <thead>
       <tr>
-      <th ></th>
-      <th> <a><img src="../images/eliminar.svg" alt="Eliminar" style="width:10px;" onclick="eliminar('')"></img></a></th>
-     
-      </tr>
+        <th >${element.uid}</th>
+        <th> <a><img src="../images/eliminar.svg" alt="Eliminar" style="width:10px;" onclick="eliminar('${element.uid}')"></img></a></th>
+     </tr>
     </thead>
     <tbody >
-    <tr>
-    <td></td>
-    <td>${element.description}</td>
-
-  </tr>
-  <tr>
-
-  <td> <a><img src="../images/like.svg" alt="Like" style="width:30px;" onclick="like()"()"></img></a></td>
-
-  <td><a><img src="../images/editar.svg" alt="Editar" style="width:30px;"onclick="editar()"></img></a></td>
-
-  </tr>
-  </tbody>
+     <tr>
+       <td></td>
+       <td>${element.description}</td>
+     </tr>
+     <tr>
+       <td> <a><img src="../images/like.svg" alt="Like" style="width:30px;" onclick="like('${element.uid}','${element.description}')"></img></a></td>
+       <td><a><img src="../images/editar.svg" alt="Editar" style="width:30px;"onclick="editar('${element.uid}','${element.description}')"></img></a></td>
+    </tr>
+    </tbody>
   </table>
   
-`
-            
-            
-            
-    
-        
- 
-  
+`;
 
-      
             
-            
-            
-            
-            
-            
-            ;
-            html += child;
+     html += child;
         });
         root.querySelector('#post-container').innerHTML = html;
         
@@ -166,3 +156,5 @@ export const listFeed = (root) => {
 
 }
 
+
+    
