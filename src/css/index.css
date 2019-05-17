@@ -1,9 +1,14 @@
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
+  height: 100%;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@media (min-width: 360px) {
+@media (min-width: 320px) {
   body {
     background-color:#ffff99;
   }
@@ -15,7 +20,6 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    
   }
 
   .s-size {
@@ -25,67 +29,60 @@ body {
   .d-block {
     display: block;
     margin: 0 auto;
-    margin-bottom: 4%;
+    margin-bottom: 2%;
     border: none;
     border:solid 1px #ccc;
     border-radius: 13px;
   }
 
   .btn-width {
-    width: 50%;
-    padding: 2%
+    width: 25%;
+    padding: 1%
   }
 
   .btn-login {
     color: white;
     font-weight: bold;
-    background-color: #F29A53;
+    background-color: #FF2F22;
+    cursor: pointer;
+  }
+
+  .btn-login:hover {
+    color: #FF2F22;
+    font-weight: bold;
+    background-color: white;
   }
 
   .input-w {
-    width: 100%;
-    padding: 3%;
+    width: 50%;
+    padding: 1%;
+  }
+
+  .social-login {
+    width: 30px;
+    cursor: pointer;
   }
 
   .register {
     text-decoration: none;
-  }
-
-}
-
-@media (min-width: 768px) {
-  body {
-    background-color: blue;
-  }
-}
-
-@media (min-width: 1024px){
-  body {
-    background-color: white;
-  }
-
-  .b-size {
-    width: 700px;
-  }
-
-  #login-container {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: space-evenly;
+    color: #FF2F22;
   }
 
   .feed-container {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     justify-content: center;
-    margin: 10px;
-    border: blue solid 1px;
+    margin: 0 auto;
   }
 
   .feed-profile {
-    border: red solid 1px;
-    margin-right: 10%;
+    display: flex;
+    align-items: baseline;
+    border: none;
+    border:solid 1px #ccc;
+    /* margin-right: 10%; */
+    border-radius: 3px;
+    margin: auto;
   }
 
   .circular-landscape {
@@ -102,10 +99,133 @@ body {
     height: 100%;
     margin-left: -25px;
   }
-  
+
   .profile-name {
-    display: block;
     margin: auto;
+    padding: 3px;
+  }
+
+  .feed-comment {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 1%;
+    border: none;
+    border:solid 1px #ccc;
+    border-radius: 3px;
+    margin: 7%;
+  }
+
+  .input-comment {
+    height: 80px;
+    padding-left: 2%;
+    border-radius: 7px;
+    border: none;
+    border:solid 1px #ccc;
+    box-shadow:
+    0 0 0 1px hsl(0, 17%, 94%),
+    0 0 0 3px hsl(0, 17%, 94%);
+    margin: 3%;
+  }
+
+  .btn-share-feed{
+    padding: 1%;
+    background-color: #878383;
+    color: white;
+    width: 25%;
+    margin-top: 3%;
+    align-self: flex-end;
+    
+  }
+
+}
+
+@media (min-width: 768px) {
+  body {
+    background-color: blue;
+  }
+}
+
+@media (min-width: 1024px){
+  body {
+    background-color: white;
+    height: 100%;
+  }
+
+  .row-login {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .column-login {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+    margin: 0 auto;
+    height: 100%;
+  }
+  
+  .column-login-login {
+    height: 100%;
+    padding-top: 25%;
+    padding-bottom: 17%;
+  }
+  
+  .column-login-image {
+    padding-top: 15%;
+  }
+  
+  .b-size {
+    width: 100%;
+    margin: 0 auto;
+    object-fit: fill
+  }
+
+  #login-container {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0 auto;
+  }
+
+  .feed-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    margin: 10px;
+  }
+
+  .feed-profile {
+    display: flex;
+    align-items: baseline;
+    border: none;
+    border:solid 1px #ccc;
+    margin-right: 10%;
+    border-radius: 3px;
+  }
+
+  .circular-landscape {
+    display: inline-block;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+  
+  .circular-landscape img {
+    width: auto;
+    height: 100%;
+    margin-left: -25px;
+  }
+
+  .profile-name {
+    margin: auto;
+    padding: 7px;
   }
 
   .feed-comment {
@@ -138,13 +258,10 @@ body {
     
   }
 }
-.fondo-login{
-  background-image: url('../../images/bg.png');
-  background-size: cover;
-}
+
 header{
-  display:flex;
-  justify-content:space-between;
+  display: flex;
+  justify-content: space-between;
   background: #4BC1B0;
   padding: 15px
 }
