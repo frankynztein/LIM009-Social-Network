@@ -1,3 +1,4 @@
+@import url(''https://fonts.googleapis.com/css?family=Kodchasan:200,300,400&display=swap'');
 html {
   height: 100%;
 }
@@ -5,7 +6,7 @@ html {
 body {
   margin: 0;
   height: 100%;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Kodchasan', sans-serif;
 }
 
 @media (min-width: 320px) {
@@ -137,8 +138,6 @@ body {
     
   }
 
-}
-
 @media (min-width: 768px) {
   body {
     background-color: blue;
@@ -191,90 +190,83 @@ body {
     justify-content: space-evenly;
     margin: 0 auto;
   }
-
-  .feed-container {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    margin: 10px;
-  }
-
-  .feed-profile {
-    display: flex;
-    align-items: baseline;
-    border: none;
-    border:solid 1px #ccc;
-    margin-right: 10%;
-    border-radius: 3px;
-  }
-
-  .circular-landscape {
-    display: inline-block;
-    position: relative;
-    width: 100px;
-    height: 100px;
-    overflow: hidden;
-    border-radius: 50%;
-  }
+/* profile view */
+body{
+  background-image: url("../../images/frutas-blanco.png");
+  opacity: 0,1
   
-  .circular-landscape img {
-    width: auto;
-    height: 100%;
-    margin-left: -25px;
-  }
-
-  .profile-name {
-    margin: auto;
-    padding: 7px;
-  }
-
-  .feed-comment {
-    display: flex;
-    flex-flow: column;
-    padding: 1%;
-    border: none;
-    border:solid 1px #ccc;
-    border-radius: 3px;
-  }
-
-  .input-comment {
-    height: 80%;
-    padding-left: 2%;
-    border-radius: 7px;
-    border: none;
-    border:solid 1px #ccc;
-    box-shadow:
-    0 0 0 1px hsl(0, 17%, 94%),
-    0 0 0 3px hsl(0, 17%, 94%);
-  }
-
-  .btn-share-feed{
-    padding: 1%;
-    background-color: #878383;
-    color: white;
-    width: 25%;
-    margin-top: 3%;
-    align-self: flex-end;
-    
-  }
 }
-
 header{
   display: flex;
   justify-content: space-between;
-  background: #4BC1B0;
-  padding: 15px
+  background: #59C8B8;
+  padding: 20px;
 }
+.div-img{
+  width: 15%
+}
+.img-user{
+  border-radius: 50%;
+  width: 100%;
+}
+.info-user{
+  background: white;
+  border:solid #59C8B8;
+  border-radius: 3px;
+  width: 80%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: flex-start;
+} 
+#form-post{
+  background-color: #B3EBE6;
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 9px;
+  border-radius: 5px;
+  border:solid 1px #ccc;
+}
+
+.input-comment {
+  width: 90%;
+  height: 80px;
+  padding-left: 2px;
+  border-radius: 7px;
+  border:solid 1px #ccc;
+}
+
+.btn-share-feed{
+  padding: 1%;
+  background-color: #878383;
+  color: white;
+  width: 25%;
+  margin-top: 3%;
+  align-self: flex-end;
+}
+select{
+  width: fit-content
+}
+
 table{
-  border: 1px solid;
-  margin: 5px;
+  background: white;
+  border: 3px solid #59C8B8;
+  margin: 15px;
   width: 40%;
 }
+.nombre{
+  background: #B3EBE6
+}
+
 .archivo {
-  
   overflow: hidden;
   }
   #file {
   background-image: url("../../images/picture.svg");
- 
+  }
+  #post-container{
+    display: flex;
+    flex-flow:wrap column;
+    align-content: center;
   }
