@@ -8,8 +8,15 @@ export const exit = () => {
 };
 
 //Crear usuario
-export const createUser = (emailSignIn, passwordSignIn) => {
+export const createUser = (emailSignIn, passwordSignIn, nameSignIn) => {
   return firebase.auth().createUserWithEmailAndPassword(emailSignIn, passwordSignIn)
+  .then(user => {
+    user.user.updateProfile({
+        displayName: nameSignIn
+    })
+    console.log(user);
+    
+})
 };
 
 //acceder con gmail y contraseña
@@ -20,7 +27,9 @@ export const signInUser = (emailLogIn, passwordLogIn) => {
 export const userSesionActive = () => {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
-      viewFeed(user)
+      setTimeout( () => {
+        viewFeed(user)
+      }, 1000);
     } else {
       console.log("no logeado")
     }

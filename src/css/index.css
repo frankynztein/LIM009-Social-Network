@@ -6,12 +6,16 @@ html {
 body {
   margin: 0;
   height: 100%;
-  font-family: Kodchasan', sans-serif;
+  font-family: Kodchasan, sans-serif;
+}
+
+.col-12 {
+  width: 100%;
 }
 
 @media (min-width: 320px) {
   body {
-    background-color:#ffff99;
+    background-color: white;
   }
 
   #login-container {
@@ -54,19 +58,20 @@ body {
     background-color: white;
   }
 
+  .social-btn {
+    width: 35px;
+    cursor: pointer;
+  }
+
   .input-w {
     width: 50%;
     padding: 1%;
   }
 
-  .social-login {
-    width: 30px;
-    cursor: pointer;
-  }
-
   .register {
     text-decoration: none;
     color: #FF2F22;
+    font-weight: bold;
   }
 
   .feed-container {
@@ -101,10 +106,10 @@ body {
     margin-left: -25px;
   }
 
-  .profile-name {
+  /* .profile-name {
     margin: auto;
     padding: 3px;
-  }
+  } */
 
   .feed-comment {
     display: flex;
@@ -128,6 +133,103 @@ body {
     margin: 3%;
   }
 
+  .btn-share-feed {
+    padding: 1%;
+    background-color: #878383;
+    color: white;
+    width: 25%;
+    margin-top: 3%;
+    align-self: flex-end;   
+  }
+
+  header{
+    display: flex;
+    justify-content: space-between;
+    background: #59C8B8;
+    padding: 20px;
+  }
+
+  .logo-img {
+    width: 100%;
+    width: 200px;
+    height:50px;
+  }
+
+  .logo-container {
+    margin-bottom: 20px;
+  }
+
+  .register-container {
+    margin-top: 15px;
+  }
+
+  .back-register {
+    text-decoration: none;
+    text-align: center;
+    /* height: 40.94%; */
+    width: 20%;
+    font-size: 14px;
+  }
+
+  .text-header {
+    color: white;
+    font-weight: bold;
+  }
+
+  .btn-signout {
+    margin-top: 1%;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .info-user {
+    display: flex;
+    justify-content: flex-start;
+    background: white;
+    border:solid #59C8B8;
+    border-radius: 3px;
+    width: 100%;
+    margin: 20px auto;
+  } 
+
+  .div-img{
+    width: 20%
+  }
+  .img-user {
+    border-radius: 50%;
+    width: 100%;
+  }
+
+  .font-weight-bold {
+    font-weight: bold;
+  }
+
+  .form-post{
+    background-color: #B3EBE6;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 9px;
+    border-radius: 5px;
+    border:solid 1px #ccc;
+  }
+
+  .privacy {
+    background-color: #FF2F22;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .input-comment {
+    width: 90%;
+    height: 70px;
+    padding-left: 2px;
+    border-radius: 7px;
+    border:solid 1px #ccc;
+  }
+  
   .btn-share-feed{
     padding: 1%;
     background-color: #878383;
@@ -135,8 +237,40 @@ body {
     width: 25%;
     margin-top: 3%;
     align-self: flex-end;
-    
   }
+
+  .margin-left {
+    margin-left: 3%;
+  }
+
+  select {
+    width: fit-content
+  }
+  
+  table {
+    background: white;
+    border: 3px solid #59C8B8;
+    margin: 15px;
+    width: 40%;
+  }
+  .nombre{
+    background: #B3EBE6
+  }
+  
+  .archivo {
+    overflow: hidden;
+    }
+  
+  #file {
+    background-image: url("../../images/picture.svg");
+    }
+  
+  #post-container{
+    display: flex;
+    flex-flow: wrap column;
+    align-content: center;
+    }
+}
 
 @media (min-width: 768px) {
   body {
@@ -144,7 +278,7 @@ body {
   }
 }
 
-@media (min-width: 1024px){
+@media (min-width: 1024px) {
   body {
     background-color: white;
     height: 100%;
@@ -190,83 +324,14 @@ body {
     justify-content: space-evenly;
     margin: 0 auto;
   }
+
+  .col-6 {
+    width: 50%;
+    float: left;
+  }
+
 /* profile view */
-body{
-  background-image: url("../../images/frutas-blanco.png");
-  opacity: 0,1
-  
-}
-header{
-  display: flex;
-  justify-content: space-between;
-  background: #59C8B8;
-  padding: 20px;
-}
-.div-img{
-  width: 15%
-}
-.img-user{
-  border-radius: 50%;
-  width: 100%;
-}
-.info-user{
-  background: white;
-  border:solid #59C8B8;
-  border-radius: 3px;
-  width: 80%;
-  margin: 20px auto;
-  display: flex;
-  justify-content: flex-start;
-} 
-#form-post{
-  background-color: #B3EBE6;
-  width: 60%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  padding: 9px;
-  border-radius: 5px;
-  border:solid 1px #ccc;
-}
-
-.input-comment {
-  width: 90%;
-  height: 80px;
-  padding-left: 2px;
-  border-radius: 7px;
-  border:solid 1px #ccc;
-}
-
-.btn-share-feed{
-  padding: 1%;
-  background-color: #878383;
-  color: white;
-  width: 25%;
-  margin-top: 3%;
-  align-self: flex-end;
-}
-select{
-  width: fit-content
-}
-
-table{
-  background: white;
-  border: 3px solid #59C8B8;
-  margin: 15px;
-  width: 40%;
-}
-.nombre{
-  background: #B3EBE6
-}
-
-.archivo {
-  overflow: hidden;
+  body{
+    /* background-image: url("../../images/frutas-blanco2.png"); */
   }
-  #file {
-  background-image: url("../../images/picture.svg");
-  }
-  #post-container{
-    display: flex;
-    flex-flow:wrap column;
-    align-content: center;
-  }
+}
