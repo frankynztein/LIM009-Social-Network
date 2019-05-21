@@ -191,11 +191,11 @@ body {
     margin: 0 auto;
   }
 /* profile view */
-body{
+/* body{
   background-image: url("../../images/frutas-blanco.png");
   opacity: 0,1
   
-}
+} */
 header{
   display: flex;
   justify-content: space-between;
@@ -249,11 +249,11 @@ select{
   width: fit-content
 }
 
-table{
+.feed{
   background: white;
   border: 3px solid #59C8B8;
   margin: 15px;
-  width: 40%;
+  width: 50%;
 }
 .nombre{
   background: #B3EBE6

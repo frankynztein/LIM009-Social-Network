@@ -15,7 +15,7 @@ export const viewLogin = () => {
             <div class="column-login-image">
                 <figure>
                     <img class="s-size b-size" src="../images/undraw_Bibliophile_hwqc.svg" alt="">
-        </figure>
+                </figure>
         </div>
         </div>
         <div class="column-login">
