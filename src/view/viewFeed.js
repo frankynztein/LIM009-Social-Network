@@ -34,60 +34,73 @@ export const viewFeed = (user) => {
         </div>
         <section id="post-container">
         </section>`;
-        root.innerHTML = feedPage;
+        root.innerHTML = feedPage; 
     const btnExit = root.querySelector('#exit');
     btnExit.addEventListener('click', () => {
         console.log("salir");    
         exit() 
+
     });
-    //crear feed
+
+    //crear post
     const btnComent= root.querySelector("#btn-publicar");
     btnComent.addEventListener('click', () => {        
         let textcoment = root.querySelector("#text-coment").value;
         let visuality = 'public';
+  
         saveFeed(textcoment, visuality, user);
     })
-    listFeed(root)
+
+
+    //leer post
+    listFeed()
+
     return root;
 }
-  
-export const listFeed = (root) => {    
-    console.log(root);
-    
-    viewFeedDb((posts) => {  
-        console.log(posts);              
-        let html = ""
-        posts.forEach(element => {            
-        let child = `
-        <div class="feed col-6">
-            <table>
-                <thead class="nombre">
-                    <tr>
-                        <th>${element.uid}</th>
-                        <th> <a><img src="../images/error.png" style="width:25px" alt="Eliminar" onclick="eliminar('${element.uid}')"></img></a></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>${element.description}</td>
-                    </tr>
-                    <tr>
-                        <td><a><img src="../images/like.png" alt="Like" style="width:25px;" onclick="like('${element.uid}','${element.description}')"></img></a></td>
-                        <td><a><img src="../images/edit.png" alt="Editar" style="width:25px;"onclick="editar('${element.uid}','${element.description}')"></img></a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </di>`;
-     html += child;
-     
-        });
-        root.querySelector('#post-container').innerHTML = html;
-        
-        // root.innerHTML = "";
-        // root.appendChild(showActUser({
-        //     ...user,
-        //     name,
-        // }, posts))
-    })
+  /**
+   * 
+//   .onSnapshot((querySnapshot) => {
+  querySnapshot.forEach((doc) => {
+      console.log(`${doc.id} => ${doc.data().first}`);
+    });
+})
+   */
+export const listFeed = () => { 
+    // var tabla=document.getElementById("tabla");
+    const t = document.querySelector('#post-container')
+    const tabalaPintar = document.createElement('div')
 
-}
+    viewFeedDb().onSnapshot((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            console.log(doc)
+            // console.log(`${doc.id} => ${doc.data().first}`);
+           const tabla =`
+            <table>
+                  <thead>
+                  <tr>
+                    <th scope="col">${doc.id}</th>
+                    <th> <a><img src="imagen/eliminar.svg" alt="Eliminar" style="width:10px;" onclick="eliminar('${doc.id}')"></img></a></th>
+                  </tr>
+                </thead>
+                <tbody >
+                <tr>
+                <td>${doc.data().first}</td>
+            
+              </tr>
+              <tr>
+            
+              <td> <a><img src="imagen/like.svg" alt="Like" style="width:30px;" onclick="like()"('${doc.id}','${doc.data().first}')"></img></a></td>
+            
+              <td><a><img src="imagen/editar.svg" alt="Editar" style="width:30px;"onclick="editar('${doc.id}','${doc.data().first}')"></img></a></td>
+            
+              </tr>
+              </table>
+                </tbody>
+            
+                  `
+                  tabalaPintar.innerHTML += tabla
+                  t.appendChild(tabalaPintar)
+          })
+        })
+         
+     }
