@@ -10,6 +10,7 @@ window.addEventListener('load', () => {
     messagingSenderId: "305974368757",
     appId: "1:305974368757:web:1024756010c9ad41"
   };
+
   firebase.initializeApp(config);
   initRouter();
 });
