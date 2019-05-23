@@ -319,8 +319,7 @@ html {
         display: flex;
         flex-direction: column;
         padding: 2%;
-        /* justify-content: flex-end; */
-        /* align-content: flex-start; */
+        width: 3%;
     }
   
     .post-user-message {
@@ -354,6 +353,8 @@ html {
   
     .btn-delete {
       cursor: pointer;
+      width: 16px;
+      height: 16px;
     }
   
     .btn-save {

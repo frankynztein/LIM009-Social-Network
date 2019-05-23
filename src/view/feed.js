@@ -53,12 +53,12 @@ export const viewFeed = (user) => {
     });
 
     
-    rootList.innerHTML = '';
+  
     const pintar = (data) => {
-       
+        rootList.innerHTML = ''; 
         data.forEach(objInfoPost => { 
             const article = document.createElement("article");
-            article.innerHTML +=
+            article.innerHTML =
                 `<article class="post">
                     <div class="post-user-info">
                         <div class="post-user-info-left">
