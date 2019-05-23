@@ -70,7 +70,9 @@ export const saveFeed = (uid,text, visuality, userName) => {
 //Leer documentos
 export const viewFeedDb = (callback) => {
   let db = firebase.firestore();
- db.collection("feeds").onSnapshot((querySnapshot) => {
+ db.collection("feeds")
+ .orderBy('date', 'desc')
+ .onSnapshot((querySnapshot) => {
    let data =[];
   querySnapshot.forEach((doc) => {
       const infoDelDocumento = {

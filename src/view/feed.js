@@ -24,7 +24,9 @@ export const viewFeed = (user) => {
             </div>
             <div class="wall-feed margin-left" >
                 <div class="form-post">
-                    <input type="text" id="text-coment" class="input-comment" placeholder="¿Qué quieres compartir?">
+                    <form id ="form-input">
+                        <input type="text" id="text-coment" class="input-comment" placeholder="¿Qué quieres compartir?">
+                    </form>
                     <div class="btn-comment">
                         <div class="btn-comment-right">
                             <img src="assets/picture.png" class="upload-icon">
@@ -45,20 +47,19 @@ export const viewFeed = (user) => {
         exit();
     });
     const btnPublicar = root.querySelector("#btn-publicar");
-    const rootList = document.querySelector("#post-container");
+
     btnPublicar.addEventListener('click', () => {
         let text = root.querySelector("#text-coment").value;
         let visuality = root.querySelector("#privacy").value;
         saveFeed(user.uid, text, visuality, user.displayName);
+        document.getElementById("form-input").reset();
     });
-
-    
-    rootList.innerHTML = '';
+    const rootList = document.querySelector("#post-container");
     const pintar = (data) => {
-       
-        data.forEach(objInfoPost => { 
+        rootList.innerHTML = '';
+        data.forEach(objInfoPost => {
             const article = document.createElement("article");
-            article.innerHTML +=
+            article.innerHTML =
                 `<article class="post">
                     <div class="post-user-info">
                         <div class="post-user-info-left">
@@ -87,13 +88,10 @@ export const viewFeed = (user) => {
            //console.log(templates);
         const btnDelete = article.querySelector(`#btn-delete-${objInfoPost.id}`);        
         btnDelete.addEventListener("click", () => {
-            // console.log(btnDelete);
             deleteFeeds(objInfoPost.id);
-        })
-
+        });
         rootList.appendChild(article);
         });
-        
     }
     viewFeedDb(pintar);
     return root;
