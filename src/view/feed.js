@@ -55,9 +55,10 @@ export const viewFeed = (user) => {
     
     rootList.innerHTML = '';
     const pintar = (data) => {
-        const article = document.createElement("article");
+       
         data.forEach(objInfoPost => { 
-            article.innerHTML =
+            const article = document.createElement("article");
+            article.innerHTML +=
                 `<article class="post">
                     <div class="post-user-info">
                         <div class="post-user-info-left">
@@ -86,8 +87,9 @@ export const viewFeed = (user) => {
            //console.log(templates);
         const btnDelete = article.querySelector(`#btn-delete-${objInfoPost.id}`);        
         btnDelete.addEventListener("click", () => {
-            console.log(btnDelete);
-        });
+            // console.log(btnDelete);
+            deleteFeeds(objInfoPost.id);
+        })
 
         rootList.appendChild(article);
         });
