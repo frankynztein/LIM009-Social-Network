@@ -45,18 +45,17 @@ export const viewFeed = (user) => {
         exit();
     });
     const btnPublicar = root.querySelector("#btn-publicar");
-    const rootList = document.querySelector("#post-container");
+
     btnPublicar.addEventListener('click', () => {
         let text = root.querySelector("#text-coment").value;
         let visuality = root.querySelector("#privacy").value;
         saveFeed(user.uid, text, visuality, user.displayName);
     });
-
-    
-    rootList.innerHTML = '';
+    const rootList = document.querySelector("#post-container");
     const pintar = (data) => {
-        const article = document.createElement("article");
-        data.forEach(objInfoPost => { 
+        rootList.innerHTML = '';
+        data.forEach(objInfoPost => {
+            const article = document.createElement("article");
             article.innerHTML =
                 `<article class="post">
                     <div class="post-user-info">
@@ -86,12 +85,10 @@ export const viewFeed = (user) => {
            //console.log(templates);
         const btnDelete = article.querySelector(`#btn-delete-${objInfoPost.id}`);        
         btnDelete.addEventListener("click", () => {
-            console.log(btnDelete);
+            deleteFeeds(objInfoPost.id);
         });
-
         rootList.appendChild(article);
         });
-        
     }
     viewFeedDb(pintar);
     return root;
