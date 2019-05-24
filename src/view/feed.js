@@ -24,11 +24,7 @@ export const viewFeed = (user) => {
             </div>
             <div class="wall-feed margin-left" >
                 <div class="form-post">
-<<<<<<< HEAD
-                    <form id="form-comment">
-=======
                     <form id ="form-input">
->>>>>>> 724f8fba75483f8fecbb6e0088050c776042d914
                         <input type="text" id="text-coment" class="input-comment" placeholder="¿Qué quieres compartir?">
                     </form>
                     <div class="btn-comment">
@@ -57,20 +53,12 @@ export const viewFeed = (user) => {
         let text = root.querySelector("#text-coment").value;
         let visuality = root.querySelector("#privacy").value;
         saveFeed(user.uid, text, visuality, user.displayName);
-<<<<<<< HEAD
-        document.getElementById("form-comment").reset();
-    });
-    const pintar = (data) => {
-        rootList.innerHTML = ''; 
-        data.forEach(objInfoPost => { 
-=======
         document.getElementById("form-input").reset();
     });
     const rootList = document.querySelector("#post-container");
     const pintar = (data) => {
         rootList.innerHTML = '';
         data.forEach(objInfoPost => {
->>>>>>> 724f8fba75483f8fecbb6e0088050c776042d914
             const article = document.createElement("article");
             article.innerHTML =
                 `<article class="post">
@@ -104,11 +92,7 @@ export const viewFeed = (user) => {
             deleteFeeds(objInfoPost.id);
         });
         rootList.appendChild(article);
-<<<<<<< HEAD
-        });  
-=======
         });
->>>>>>> 724f8fba75483f8fecbb6e0088050c776042d914
     }
     viewFeedDb(pintar);
     return root;
