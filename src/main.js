@@ -1,4 +1,3 @@
-// Este es el punto de entrada de tu aplicacion
 import { initRouter } from './router.js';
 
 window.addEventListener('load', () => {  

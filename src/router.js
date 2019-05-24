@@ -1,7 +1,12 @@
-import {viewLogin} from './view/viewLogIn.js';
-import {viewRegister} from './view/viewRegister.js';
-import {viewFeed} from './view/viewFeed.js';
-import { userSesionActive } from './view-controller/index.js';
+import {viewLogin} from './view/login.js';
+import {viewRegister} from './view/register.js';
+import { userSesionActive } from './lib/controller-firebase/index.js';
+import {viewFeed} from './view/feed.js'
+
+const getUser = (user) =>{
+  
+  viewFeed(user);
+}
 
 const changeTmp = (hash) => {
     if (hash === '#/' || hash === '' || hash === '#') {
@@ -23,7 +28,7 @@ const viewTmp = (routers) => {
         break;
       case 'register': viewRegister();
         break;
-      case 'profile': userSesionActive();
+      case 'profile': userSesionActive(getUser);
         break;
       default: viewLogin();
         break;
