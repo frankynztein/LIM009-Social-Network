@@ -35,8 +35,7 @@ export const userSesionActive = (callback) => {
               // User is signed in.
           } else {
               // No user is signed in.
-              return callback(null)
-
+              return callback(null);
           }
           unsubscribe()
       });
@@ -55,10 +54,10 @@ export const facebookLogin = () => {
 };
 
 // Agregar documentos
-export const saveFeed = (uid,text, visuality, userName) => {
+export const saveFeed = (uid, text, visuality, userName) => {
   let db = firebase.firestore();
   return db.collection("feeds").add({
-      userId: uid,
+      userId:uid,
       user: userName,
       description: text,
       state: visuality,
@@ -85,16 +84,19 @@ export const viewFeedDb = (callback) => {
 })
 };
 
-// Ordernar publicaciones
-// export const orderFeedByDate = () => {
-//   let db = firebase.firestore();
-//   let orderFeed = db.collection("feeds");
-//   return orderFeed.orderBy('date')
-// };
-
 // Borrar publicaciones
 export const deleteFeeds = (id) => {
   let db = firebase.firestore(); 
  return db.collection("feeds").doc(id).delete()
 };
+
+//editar
+export const updatePost = (id, text) => {
+  let db = firebase.firestore();
+	return db.collection("feeds").doc(id).update({
+		description: text,
+		//state: visuality,
+	})
+};
+
 
