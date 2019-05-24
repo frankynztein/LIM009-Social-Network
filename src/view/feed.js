@@ -31,7 +31,8 @@ export const viewFeed = (user) => {
                     <div class="btn-comment">
                         <div class="btn-comment-right">
                             <img src="assets/picture.png" class="upload-icon">
-                            <select id ="privacy" class="privacy">   
+                            <select id ="privacy" class="privacy"> 
+                                <option selected disabled value="">Privacidad</option>  
                                 <option value="private" class="font-weight-privacy">Privado</option>
                                 <option value="public" class="font-weight-privacy">Público</option>
                             </select>
@@ -52,13 +53,13 @@ export const viewFeed = (user) => {
     btnPublicar.addEventListener('click', () => {
         let text = root.querySelector("#text-coment").value;
         let visuality = root.querySelector("#privacy").value;
-        saveFeed(user.uid,text, visuality, user.displayName);
+        saveFeed(user.uid, text, visuality, user.displayName);
         document.getElementById("form-input").reset();
+    });
         // console.log(userId);
         // console.log(user.uid);
        // console.log(objInfoPost.id);
         //console.log(objInfoPost.uid === user.uid);
-
     });
     const rootList = document.querySelector("#post-container");
     const pintar = (data) => {
@@ -115,13 +116,10 @@ export const viewFeed = (user) => {
             // console.log(objInfoPost.data.userId);
             // console.log(user.uid);
             // console.log(objInfoPost.uid);
-            // console.log(objInfoPost.data.userId === user.uid);
-           
-            
+            // console.log(objInfoPost.data.userId === user.uid);    
         });
         rootList.appendChild(article);
-        });
-        
+        });  
     }
     viewFeedDb(pintar);
     return root;
