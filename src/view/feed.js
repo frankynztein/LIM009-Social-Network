@@ -1,4 +1,5 @@
-import { exit, saveFeed, viewFeedDb, deleteFeeds } from "../lib/controller-firebase/index.js";
+import { exit, saveFeed, viewFeedDb, deleteFeeds, updatePost } from "../lib/controller-firebase/index.js";
+// import { log } from "util";
 
 export const viewFeed = (user) => {
     const root = document.getElementById('content');
@@ -24,11 +25,7 @@ export const viewFeed = (user) => {
             </div>
             <div class="wall-feed margin-left" >
                 <div class="form-post">
-<<<<<<< HEAD
-                    <form id="form-comment">
-=======
                     <form id ="form-input">
->>>>>>> 724f8fba75483f8fecbb6e0088050c776042d914
                         <input type="text" id="text-coment" class="input-comment" placeholder="¿Qué quieres compartir?">
                     </form>
                     <div class="btn-comment">
@@ -57,20 +54,17 @@ export const viewFeed = (user) => {
         let text = root.querySelector("#text-coment").value;
         let visuality = root.querySelector("#privacy").value;
         saveFeed(user.uid, text, visuality, user.displayName);
-<<<<<<< HEAD
-        document.getElementById("form-comment").reset();
-    });
-    const pintar = (data) => {
-        rootList.innerHTML = ''; 
-        data.forEach(objInfoPost => { 
-=======
         document.getElementById("form-input").reset();
+    });
+        // console.log(userId);
+        // console.log(user.uid);
+       // console.log(objInfoPost.id);
+        //console.log(objInfoPost.uid === user.uid);
     });
     const rootList = document.querySelector("#post-container");
     const pintar = (data) => {
         rootList.innerHTML = '';
         data.forEach(objInfoPost => {
->>>>>>> 724f8fba75483f8fecbb6e0088050c776042d914
             const article = document.createElement("article");
             article.innerHTML =
                 `<article class="post">
@@ -79,11 +73,11 @@ export const viewFeed = (user) => {
                             <p class="post-user-name font-weight-bold">${objInfoPost.data.user}</p>
                         </div>
                         <div class="post-user-info-right">
-                            <img src="assets/delete-button.png" id="btn-delete-${objInfoPost.id}" class="btn-delete">
+                        <img src="assets/delete-button.png" id="btn-delete-${objInfoPost.id}" class="btn-delete">
                         </div>
                     </div>
                     <div class="post-user-message">
-                        <p class="post-user-text">${objInfoPost.data.description}</p>
+                        <textarea id= "text-${objInfoPost.id}" class="post-user-text" disabled= true>${objInfoPost.data.description}</textarea>
                         <img src="" alt="" class="post-user-img">
                     </div>
                     <div class="post-icons">
@@ -91,24 +85,41 @@ export const viewFeed = (user) => {
                             <img src="assets/comment-white-oval-bubble.png" alt="" class="post-icon-comment comment-icon">
                             <img src="assets/like.png" alt="Like" id="btn-like-${objInfoPost.id}" class="post-icon-like like-icon">
                             <img src="assets/picture24px.png" alt="" class="post-icon-upload upload-icon">
-                            <img src="assets/edit.png" alt="Edit" id="btn-edit-${objInfoPost.id}" class="post-icon-edit edit-icon">
+                            ${(objInfoPost.data.userId === user.uid) ? `<img src="assets/edit.png" alt="Edit" id="btn-edit-${objInfoPost.id}" class="post-icon-edit edit-icon">` : ""}
+                            <p id="state-${objInfoPost.id}">${objInfoPost.data.state}</p>
                         </div>
                         <div class="post-icons-btn-save">
                             <button class="btn-login btn-save">Guardar</button>
                         </div>
                     </div>
                 </article>`;
-           //console.log(templates);
+           //console.log(templates);  
         const btnDelete = article.querySelector(`#btn-delete-${objInfoPost.id}`);        
         btnDelete.addEventListener("click", () => {
+            if(objInfoPost.data.userId === user.uid){
             deleteFeeds(objInfoPost.id);
+            }  
+        });
+    
+        const btnEdit = article.querySelector(`#btn-edit-${objInfoPost.id}`);
+        let text = article.querySelector(`#text-${objInfoPost.id}`);
+        console.log(btnEdit);
+        btnEdit.addEventListener('click', () => {
+            if(text.disabled){
+                text.disabled = false;
+            }else{
+                text.disabled = true;
+                return updatePost(objInfoPost.id,text.value); 
+            } 
+                console.log('ok');
+            // updatePost(objInfoPost.id, text);
+            // console.log(objInfoPost.data.userId);
+            // console.log(user.uid);
+            // console.log(objInfoPost.uid);
+            // console.log(objInfoPost.data.userId === user.uid);    
         });
         rootList.appendChild(article);
-<<<<<<< HEAD
         });  
-=======
-        });
->>>>>>> 724f8fba75483f8fecbb6e0088050c776042d914
     }
     viewFeedDb(pintar);
     return root;
