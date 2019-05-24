@@ -257,7 +257,10 @@ html {
     .font-weight-privacy {
         font-weight: bold;
     }
-  
+
+    select option[disabled]:first-child {
+      display: none;
+    }  
   
     .btn-compartir {
         /* margin: 0 auto;

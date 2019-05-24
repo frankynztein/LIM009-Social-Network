@@ -24,11 +24,14 @@ export const viewFeed = (user) => {
             </div>
             <div class="wall-feed margin-left" >
                 <div class="form-post">
-                    <input type="text" id="text-coment" class="input-comment" placeholder="¿Qué quieres compartir?">
+                    <form id="form-comment">
+                        <input type="text" id="text-coment" class="input-comment" placeholder="¿Qué quieres compartir?">
+                    </form>
                     <div class="btn-comment">
                         <div class="btn-comment-right">
                             <img src="assets/picture.png" class="upload-icon">
-                            <select id ="privacy" class="privacy">   
+                            <select id ="privacy" class="privacy"> 
+                                <option selected disabled value="">Privacidad</option>  
                                 <option value="private" class="font-weight-privacy">Privado</option>
                                 <option value="public" class="font-weight-privacy">Público</option>
                             </select>
@@ -50,6 +53,7 @@ export const viewFeed = (user) => {
         let text = root.querySelector("#text-coment").value;
         let visuality = root.querySelector("#privacy").value;
         saveFeed(user.uid, text, visuality, user.displayName);
+        document.getElementById("form-comment").reset();
     });
 
     
