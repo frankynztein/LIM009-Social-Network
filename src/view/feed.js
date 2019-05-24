@@ -1,5 +1,4 @@
-import { exit, saveFeed, viewFeedDb, deleteFeeds, updatePost } from "../lib/controller-firebase/index.js";
-// import { log } from "util";
+import { exit, saveFeed, viewFeedDb, deleteFeeds, updatePost, likePost } from "../lib/controller-firebase/index.js";
 
 export const viewFeed = (user) => {
     const root = document.getElementById('content');
@@ -31,9 +30,8 @@ export const viewFeed = (user) => {
                     <div class="btn-comment">
                         <div class="btn-comment-right">
                             <img src="assets/picture.png" class="upload-icon">
-                            <input type="file" value="upload" <img src="assets/picture.png" class="upload-icon">>
-                            <select id ="privacy" class="privacy"> 
-                                <option selected disabled value="">Privacidad</option>  
+                            <select id ="privacy-${user.uid}" class="privacy">
+                                <option selected disabled value="">Privacidad</option>   
                                 <option value="private" class="font-weight-privacy">Privado</option>
                                 <option value="public" class="font-weight-privacy">Público</option>
                             </select>
@@ -53,15 +51,14 @@ export const viewFeed = (user) => {
 
     btnPublicar.addEventListener('click', () => {
         let text = root.querySelector("#text-coment").value;
-        let visuality = root.querySelector("#privacy").value;
-        saveFeed(user.uid, text, visuality, user.displayName);
+        let visuality = root.querySelector(`#privacy-${user.uid}`).value;
+        saveFeed(user.uid,text, visuality, user.displayName);
         document.getElementById("form-input").reset();
-    
+    });
         // console.log(userId);
         // console.log(user.uid);
        // console.log(objInfoPost.id);
-        //console.log(objInfoPost.uid === user.uid);
-    });
+
     const rootList = document.querySelector("#post-container");
     const pintar = (data) => {
         rootList.innerHTML = '';
@@ -74,7 +71,7 @@ export const viewFeed = (user) => {
                             <p class="post-user-name font-weight-bold">${objInfoPost.data.user}</p>
                         </div>
                         <div class="post-user-info-right">
-                        <img src="assets/delete-button.png" id="btn-delete-${objInfoPost.id}" class="btn-delete">
+                        ${(objInfoPost.data.userId === user.uid) ? `<img src="assets/delete-button.png" id="btn-delete-${objInfoPost.id}" class="btn-delete">` : `<img src= "assets/delete-button.png" id ="btn-delete-${objInfoPost.id}" class="btn-delete hide" ></img>`}
                         </div>
                     </div>
                     <div class="post-user-message">
@@ -84,46 +81,71 @@ export const viewFeed = (user) => {
                     <div class="post-icons">
                         <div class="post-icons-img">
                             <img src="assets/comment-white-oval-bubble.png" alt="" class="post-icon-comment comment-icon">
-                            <img src="assets/like.png" alt="Like" id="btn-like-${objInfoPost.id}" class="post-icon-like like-icon">
-                            <img src="assets/picture24px.png" alt="" class="post-icon-upload upload-icon">
-                            ${(objInfoPost.data.userId === user.uid) ? `<img src="assets/edit.png" alt="Edit" id="btn-edit-${objInfoPost.id}" class="post-icon-edit edit-icon">` : ""}
-                            <p id="state-${objInfoPost.id}">${objInfoPost.data.state}</p>
+                            <img src="assets/like.png" alt="Like" data-like="${objInfoPost.id}" class="post-icon-like like-icon">
+                            ${(objInfoPost.data.userId === user.uid) ? `<img src="assets/edit.png" alt="Edit" id="btn-edit-${objInfoPost.id}" class="post-icon-edit edit-icon">` :`<img src="assets/edit.png" alt="Edit" id="btn-edit-${objInfoPost.id}" class="post-icon-edit edit-icon hide">` }
                         </div>
                         <div class="post-icons-btn-save">
-                            <button class="btn-login btn-save">Guardar</button>
+                            ${objInfoPost.data.userId === user.uid ?
+                                `<select id="privacy-${objInfoPost.data.userId}">
+                                    <option selected disabled value = "">Privacidad</option>
+                                    <option value = "private" class = "font-weight-privacy">Privado</option>
+                                    <option value = "public" class = "font-weight-privacy">Publico</option>
+                                </select>` :
+                                `<select id="privacy-${objInfoPost.data.userId}" class="privacy hide">
+                                    <option selected disabled value = "">Privacidad</option>
+                                    <option value = "private" class = "font-weight-privacy">Privado</option>
+                                    <option value = "public" class = "font-weight-privacy">Publico</option>
+                                </select>`}  
                         </div>
                     </div>
                 </article>`;
            //console.log(templates);  
         const btnDelete = article.querySelector(`#btn-delete-${objInfoPost.id}`);        
         btnDelete.addEventListener("click", () => {
-            if(objInfoPost.data.userId === user.uid){
+            //if(objInfoPost.data.userId && objInfoPost.data.userId === user.uid){
             deleteFeeds(objInfoPost.id);
-            }  
+            //}  
         });
     
         const btnEdit = article.querySelector(`#btn-edit-${objInfoPost.id}`);
         let text = article.querySelector(`#text-${objInfoPost.id}`);
-        console.log(btnEdit);
+        //let visuality = document.querySelector(`privacy-${objInfoPost.data.userId}`);
         btnEdit.addEventListener('click', () => {
+            //console.log(select);
             if(text.disabled){
                 text.disabled = false;
+                btnEdit.src = "assets/picture24px.png"
             }else{
                 text.disabled = true;
+                btnEdit.src = "assets/edit.png"
                 return updatePost(objInfoPost.id,text.value); 
             } 
                 console.log('ok');
             // updatePost(objInfoPost.id, text);
             // console.log(objInfoPost.data.userId);
-            // console.log(user.uid);
+            //  console.log(user.uid);
+            //  console.log(user);
             // console.log(objInfoPost.uid);
-            // console.log(objInfoPost.data.userId === user.uid);    
+            // console.log(objInfoPost.data.userId === user.uid);
         });
+        // let btnLike = document.querySelector(`#btn-like-${objInfoPost.id}`);
+        // console.log(btnLike);
+        // btnLike.addEventListener("click", (event) => {
+        //     let btnTarget = event.target;
+        //     let idTarget = btnTarget.getAttribute("data-like");
+        //     let likeCounter = parseInt(article.querySelector(`#like-counter>${objInfoPost.id}`).innerHTML);
+        //     let counter = likeCounter + 1;
+        //     article.querySelector(`#like-counter>${objInfoPost.id}`).innerHTML = counter;
+        //     likePost(idTarget, counter);
+        // })
         rootList.appendChild(article);
-        });  
+        });
     }
     viewFeedDb(pintar);
     return root;
 }
+
+
+
 
 
