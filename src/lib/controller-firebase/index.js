@@ -71,7 +71,11 @@ export const saveFeed = (uid,text, visuality, userName) => {
 export const viewFeedDb = (callback) => {
   let db = firebase.firestore();
  db.collection("feeds")
+<<<<<<< HEAD
  .orderBy('date','desc')
+=======
+ .orderBy('date', 'desc')
+>>>>>>> 724f8fba75483f8fecbb6e0088050c776042d914
  .onSnapshot((querySnapshot) => {
    let data =[];
   querySnapshot.forEach((doc) => {
