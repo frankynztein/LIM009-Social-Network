@@ -55,9 +55,6 @@ export const viewFeed = (user) => {
         saveFeed(user.uid, text, visuality, user.displayName);
         document.getElementById("form-comment").reset();
     });
-
-    
-  
     const pintar = (data) => {
         rootList.innerHTML = ''; 
         data.forEach(objInfoPost => { 
@@ -96,8 +93,7 @@ export const viewFeed = (user) => {
         })
 
         rootList.appendChild(article);
-        });
-        
+        });  
     }
     viewFeedDb(pintar);
     return root;
