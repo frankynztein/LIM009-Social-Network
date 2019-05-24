@@ -10,7 +10,7 @@ export const viewRegister = () => {
     <div class="register-container">
       <div class="logo-container">
         <header>
-        <a href="http://localhost:5501/src/index.html#/login"><img src='../images/fob-color.png' class="logo-img"> </a>      
+        <a href="http://localhost:5501/src/index.html#/login"><img src='assets/fob-white.png' class="logo-img"> </a>      
         </header>
       </div>
       <form>

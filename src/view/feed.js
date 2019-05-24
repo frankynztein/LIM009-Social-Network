@@ -31,6 +31,7 @@ export const viewFeed = (user) => {
                     <div class="btn-comment">
                         <div class="btn-comment-right">
                             <img src="assets/picture.png" class="upload-icon">
+                            <input type="file" value="upload" <img src="assets/picture.png" class="upload-icon">>
                             <select id ="privacy" class="privacy"> 
                                 <option selected disabled value="">Privacidad</option>  
                                 <option value="private" class="font-weight-privacy">Privado</option>

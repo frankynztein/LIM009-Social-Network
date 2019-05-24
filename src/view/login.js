@@ -25,7 +25,7 @@ export const viewLogin = () => {
             <form id="login-user">
                 <input class="d-block input-w" type="email" id="email-login" placeholder="Email">
                 <input class="d-block input-w" type="password" id="password-login" placeholder="Password">
-                <button class="d-block btn-login btn-width" id="login-btn">Log in</button>
+                <button class="d-block btn-login btn-width" id="login-btn">Inicia sesión</button>
                 <p class="m-auto">O bien ingresa con...</p>
                 <a id="fbBtn"><img class="social-btn" src="assets/facebook-logo-in-circular-button-outlined-social-symbol.svg" alt="Facebook"></img></a>
                 <a id="googleBtn"><img class="social-btn" src="assets/search.svg" alt="Google"></img></a>
