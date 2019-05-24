@@ -13,9 +13,9 @@ export const createUser = (emailSignIn, passwordSignIn, nameSignIn) => {
   .then(user => {
     user.user.updateProfile({
         displayName: nameSignIn
-    })
+    });
     console.log(user);
-  })
+  });
 };
 
 //acceder con gmail y contraseña
@@ -36,7 +36,6 @@ export const userSesionActive = (callback) => {
           } else {
               // No user is signed in.
               return callback(null)
-
           }
           unsubscribe()
       });
@@ -55,7 +54,7 @@ export const facebookLogin = () => {
 };
 
 // Agregar documentos
-export const saveFeed = (uid,text, visuality, userName) => {
+export const saveFeed = (uid, text, visuality, userName) => {
   let db = firebase.firestore();
   return db.collection("feeds").add({
       userId: uid,
@@ -70,7 +69,9 @@ export const saveFeed = (uid,text, visuality, userName) => {
 //Leer documentos
 export const viewFeedDb = (callback) => {
   let db = firebase.firestore();
- db.collection("feeds").onSnapshot((querySnapshot) => {
+ db.collection("feeds")
+ .orderBy('date', 'desc')
+ .onSnapshot((querySnapshot) => {
    let data =[];
   querySnapshot.forEach((doc) => {
       const infoDelDocumento = {
@@ -82,13 +83,6 @@ export const viewFeedDb = (callback) => {
   callback(data);
 })
 };
-
-// Ordernar publicaciones
-// export const orderFeedByDate = () => {
-//   let db = firebase.firestore();
-//   let orderFeed = db.collection("feeds");
-//   return orderFeed.orderBy('date')
-// };
 
 // Borrar publicaciones
 export const deleteFeeds = (id) => {

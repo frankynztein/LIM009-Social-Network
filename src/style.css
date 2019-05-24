@@ -136,6 +136,13 @@ html {
     .register-container {
       margin-top: 15px;
     }
+
+    .error-alert {
+      font-weight: bolder;
+      color: #FF2F22;
+      text-align: center;
+      margin-bottom: 1%;
+    }
   
     .back-register {
       text-decoration: none;
@@ -257,6 +264,14 @@ html {
     .font-weight-privacy {
         font-weight: bold;
     }
+
+    select option[disabled]:first-child { 
+      display: none;
+    }
+
+    .hide {
+      display: none;
+    }
   
   
     .btn-compartir {
@@ -303,7 +318,7 @@ html {
         justify-content: space-between;
         border: solid 1px #ccc;
         /* padding: 2%; */
-        width: 100%;
+        /* width: 100%; */
     }
   
     .post-user-info-left {
@@ -319,6 +334,7 @@ html {
         display: flex;
         flex-direction: column;
         padding: 2%;
+        width: 3%
         /* justify-content: flex-end; */
         /* align-content: flex-start; */
     }
@@ -344,7 +360,8 @@ html {
   
     .post-icons-btn-save {
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: row;
+        padding-right: 2%;
     }
   
     .comment-icon, .like-icon, .upload-icon, .edit-icon {
@@ -354,6 +371,8 @@ html {
   
     .btn-delete {
       cursor: pointer;
+      width: 16px;
+      height: 16px;
     }
   
     .btn-save {
