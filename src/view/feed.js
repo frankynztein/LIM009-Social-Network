@@ -54,12 +54,11 @@ export const viewFeed = (user) => {
         let visuality = root.querySelector(`#privacy-${user.uid}`).value;
         saveFeed(user.uid,text, visuality, user.displayName);
         document.getElementById("form-input").reset();
+    });
         // console.log(userId);
         // console.log(user.uid);
        // console.log(objInfoPost.id);
-        //console.log(objInfoPost.uid === user.uid);
 
-    });
     const rootList = document.querySelector("#post-container");
     const pintar = (data) => {
         rootList.innerHTML = '';
@@ -145,5 +144,8 @@ export const viewFeed = (user) => {
     viewFeedDb(pintar);
     return root;
 }
+
+
+
 
 
