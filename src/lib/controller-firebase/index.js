@@ -99,4 +99,12 @@ export const updatePost = (id, text) => {
 	})
 };
 
+//like
+export const likePost = (id, like) => {
+  let db = firebase.firestore();
+  return db.collection("feeds").doc(id).update({
+    likes:like
+  })
+}
+
 
