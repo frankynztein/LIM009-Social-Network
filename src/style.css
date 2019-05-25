@@ -309,129 +309,80 @@ body {
       flex-direction: column;
       padding: 9px;
       border-radius: 10px;
-      cursor: pointer;
-    }
-  
-    .privacy:hover {
-        background-color: white;
-        color: #FF2F22;
-    }
-  
-    .font-weight-privacy {
-        font-weight: bold;
-    }
-
-    select option[disabled]:first-child {
-      display: none;
-    }  
-  
-    .btn-compartir {
-        /* margin: 0 auto;
-        margin-bottom: 2%; */
-        border: none;
-        /* border:solid 1px #ccc; */
-        border-radius: 13px;
-        /* width: 100%; */
-        /* padding: 2%; */
-    }
-  
-    .margin-left {
-      margin-left: 3%;
-    }
-  
-    select {
-      width: fit-content
-    }
-    
-    .nombre{
-      background: #B3EBE6
-    }
-    
-    .post-container{
-      display: flex;
-      flex-flow: column;
-    }
-  
-    .post {
-        width: 100%;
-        margin: 0 auto;
-        margin-top: 5%;
-        display: flex;
-        flex-direction: column;
-        padding: 9px;
-        border-radius: 10px;
-        border:solid #ccc;
-    }
-  
-    .post-user-info {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        border: solid 1px #ccc;
-        /* padding: 2%; */
-        width: 100%;
-    }
-  
-    .post-user-info-left {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        padding: 2%;
-        width: 100%;
-  
-    }
-  
-    .post-user-info-right {
-        display: flex;
-        flex-direction: column;
-        padding: 2%;
-        width: 3%;
-    }
-  
-    .post-user-message {
-        border: solid 1px #ccc;
-        padding: 2%;
-    }
-  
-    .post-icons {
-        display: flex;
-        flex-flow: row nowrap;
-        border: solid 1px #ccc;
-        padding: 2%;
-    }
-  
-    .post-icons-img {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        height: 100%;
-    }
-  
-    .post-icons-btn-save {
-        display: flex;
-        flex-direction: row-reverse;
-    }
-  
-    .comment-icon, .like-icon, .upload-icon, .edit-icon {
-        cursor: pointer;
-        margin-left: 5%;
-    }
-  
-    .btn-delete {
-      cursor: pointer;
-      width: 16px;
-      height: 16px;
-    }
-  
-    .btn-save {
-        /* margin: 0 auto; */
-        /* margin-bottom: 2%; */
-        border: none;
-        /* border:solid 1px #ccc; */
-        border-radius: 13px;
-        width: 100%;
-        /* padding: 5% 20% 5% 20%; */
-    }
-  
+      border:solid #ccc;
   }
 
+  .post-user-info {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      border: solid 1px #ccc;
+      /* padding: 2%; */
+      /* width: 100%; */
+  }
+
+  .post-user-info-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 2%;
+      width: 100%;
+
+  }
+
+  .post-user-info-right {
+      display: flex;
+      flex-direction: column;
+      padding: 2%;
+      width: 3%
+      /* justify-content: flex-end; */
+      /* align-content: flex-start; */
+  }
+
+  .post-user-message {
+      border: solid 1px #ccc;
+      padding: 2%;
+  }
+
+  .post-icons {
+      display: flex;
+      flex-flow: row nowrap;
+      border: solid 1px #ccc;
+      padding: 2%;
+  }
+
+  .post-icons-img {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      height: 100%;
+  }
+
+  .post-icons-btn-save {
+      display: flex;
+      flex-direction: row;
+      padding-right: 2%;
+  }
+
+  .comment-icon, .like-icon, .upload-icon, .edit-icon {
+      cursor: pointer;
+      margin-left: 5%;
+  }
+
+  .btn-delete {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+  }
+
+  .btn-save {
+      /* margin: 0 auto; */
+      /* margin-bottom: 2%; */
+      border: none;
+      /* border:solid 1px #ccc; */
+      border-radius: 13px;
+      width: 100%;
+      /* padding: 5% 20% 5% 20%; */
+  }
+
+}
