@@ -1,4 +1,5 @@
 import { createUser, userSesionActive } from "../lib/controller-firebase/index.js";
+import { showErrorMessage } from "./login.js";
 
 const changeHash = (hash) =>  {
   location.hash = hash;
@@ -17,7 +18,7 @@ export const viewRegister = () => {
         <input class="d-block input-w" type="text" id="name-signup" placeholder="Usuario">
         <input class="d-block input-w" type="email" id="email-signup" placeholder="Email">
         <input class="d-block input-w" type="password" id="password-signup" placeholder="Password">
-        <section id="register-error-alert" class="error-alert"></section>
+        <section id= "login-error-alert" class= "error-alert"></section>
         <button id="register-btn" class="d-block btn-login btn-width">Registrarse</button>
         <a href="#/login" class="d-block btn-login btn-width back-register">Regresar</a>
       </form>
@@ -29,7 +30,6 @@ export const viewRegister = () => {
         const passwordSignUp = root.querySelector('#password-signup');
         const nameSignUp = root.querySelector('#name-signup');
         
-        
         btnRegisterEmail.addEventListener('click', (event) => {
           event.preventDefault();
           console.log(nameSignUp.value);
@@ -37,24 +37,18 @@ export const viewRegister = () => {
           .then(() => changeHash('#/profile'))
           .catch((error) => {
             let errorCode = error.code;
-            let errorMessage = document.createElement('p');
-            console.log(error.code);
             if (errorCode === 'auth/invalid-email') {
-              let textError = document.createTextNode('Correo electrónico inválido.');
-              errorMessage.appendChild(textError);
-              document.getElementById('register-error-alert').appendChild(errorMessage);
+              document.getElementById('login-error-alert').innerHTML= '';
+              showErrorMessage('Correo electrónico inválido.');
             } else if (errorCode === 'auth/weak-password') {
-              let textError = document.createTextNode('La clave debe tener al menos 6 dígitos.');
-              errorMessage.appendChild(textError);
-              document.getElementById('register-error-alert').appendChild(errorMessage);
+              document.getElementById('login-error-alert').innerHTML= '';
+              showErrorMessage('La clave debe tener al menos 6 dígitos.');
             } else if (errorCode === 'auth/email-already-in-use') {
-              let textError = document.createTextNode('El correo electrónico ya está siendo utilizado.');
-              errorMessage.appendChild(textError);
-              document.getElementById('register-error-alert').appendChild(errorMessage);
+              document.getElementById('login-error-alert').innerHTML= '';
+              showErrorMessage('El correo electrónico ya está siendo utilizado.');
             } else {
-              let textError = document.createTextNode(errorCode);
-              errorMessage.appendChild(textError);
-              document.getElementById('register-error-alert').appendChild(errorMessage);
+              document.getElementById('login-error-alert').innerHTML= '';
+              showErrorMessage(errorCode);
             }
           });
         });
