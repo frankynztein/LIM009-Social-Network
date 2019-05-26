@@ -6,7 +6,7 @@ body {
   margin: 0;
   height: 100%;
   width: 100%;
-  font-family: Kodchasan, sans-serif;
+  font-family: Helvetica, sans-serif;
 }
 
 @media (min-width: 320px) {  
@@ -112,6 +112,11 @@ body {
     border: none;
     border:solid 1px #FF2F22;
     margin: 3%;
+  }
+
+  input::placeholder {
+    font-weight: bolder;
+    font-size: 14px;
   }
 
   .btn-share-feed {
@@ -384,5 +389,13 @@ body {
       width: 100%;
       /* padding: 5% 20% 5% 20%; */
   }
+
+  textarea {
+    resize: none;
+    background-color: transparent;
+    border: none;
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+ }
 
 }

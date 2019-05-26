@@ -75,7 +75,7 @@ export const viewFeed = (user) => {
                         </div>
                     </div>
                     <div class="post-user-message">
-                        <textarea id= "text-${objInfoPost.id}" class="post-user-text" disabled= true>${objInfoPost.data.description}</textarea>
+                        <textarea id="text-${objInfoPost.id}" class="post-user-text" disabled=true rows="5" cols="75">${objInfoPost.data.description}</textarea>
                         <img src="" alt="" class="post-user-img">
                     </div>
                     <div class="post-icons">
@@ -86,15 +86,15 @@ export const viewFeed = (user) => {
                         </div>
                         <div class="post-icons-btn-save">
                             ${objInfoPost.data.userId === user.uid ?
-                                `<select id="privacy-${objInfoPost.data.userId}">
-                                    <option selected disabled value = "">Privacidad</option>
-                                    <option value = "private" class = "font-weight-privacy">Privado</option>
-                                    <option value = "public" class = "font-weight-privacy">Publico</option>
+                                `<select id="privacy-${objInfoPost.data.userId}" class="privacy">
+                                    <option selected disabled value="">Privacidad</option>
+                                    <option value="private" class="font-weight-privacy">Privado</option>
+                                    <option value="public" class="font-weight-privacy">Publico</option>
                                 </select>` :
                                 `<select id="privacy-${objInfoPost.data.userId}" class="privacy hide">
-                                    <option selected disabled value = "">Privacidad</option>
-                                    <option value = "private" class = "font-weight-privacy">Privado</option>
-                                    <option value = "public" class = "font-weight-privacy">Publico</option>
+                                    <option selected disabled value="">Privacidad</option>
+                                    <option value="private" class="font-weight-privacy">Privado</option>
+                                    <option value="public" class="font-weight-privacy">Publico</option>
                                 </select>`}  
                         </div>
                     </div>
