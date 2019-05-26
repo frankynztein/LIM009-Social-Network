@@ -1,12 +1,18 @@
-html {
+/* @import url('https://fonts.googleapis.com/css?family=Noto+Sans+HK&display=swap'); */
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
+
+/* html {
     height: 100%;
-  }
+    font-family: 'Fira Sans', sans-serif;
+    letter-spacing: 1px;
+  } */
   
   body {
     margin: 0;
     height: 100%;
     width: 100%;
-    font-family: Kodchasan, sans-serif;
+    /* font-family: 'Noto Sans HK', sans-serif; */
+
   }
   
   @media (min-width: 320px) {  
