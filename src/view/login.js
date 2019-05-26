@@ -4,6 +4,12 @@ import {facebookLogin,googleLogin,createUser,userSesionActive,signInUser, exit} 
 const changeHash = (hash) =>  {
   location.hash = hash;
 }
+export const showErrorMessage = (errorText) => {
+  let errorMessage = document.createElement('p');
+  let textError = document.createTextNode(errorText);
+  errorMessage.appendChild(textError);
+  document.getElementById('login-error-alert').appendChild(errorMessage);
+};
 
 export const viewLogin = () => {
     const root= document.getElementById('content')
@@ -14,7 +20,7 @@ export const viewLogin = () => {
           <div class="column-login">
             <div class="column-login-image">
                 <figure>
-                    <img class="s-size b-size" src="assets/undraw_street_food_hm5i.svg" alt="Imagen de fondo">
+                    <img class="s-size b-size" src="assets/undraw_street_food_hm5i.svg" alt="">
                 </figure>
             </div>
         </div>
@@ -25,8 +31,8 @@ export const viewLogin = () => {
             <form id="login-user">
                 <input class="d-block input-w" type="email" id="email-login" placeholder="Email">
                 <input class="d-block input-w" type="password" id="password-login" placeholder="Password">
-                <section id="login-error-alert" class="error-alert"></section>
-                <button class="d-block btn-login btn-width" id="login-btn">Iniciar sesión</button>
+                <section id= "login-error-alert" class= "error-alert"></section>
+                <button class="d-block btn-login btn-width" id="login-btn">Inicia sesión</button>
                 <p class="m-auto">O bien ingresa con...</p>
                 <a id="fbBtn"><img class="social-btn" src="assets/facebook-logo-in-circular-button-outlined-social-symbol.svg" alt="Facebook"></img></a>
                 <a id="googleBtn"><img class="social-btn" src="assets/search.svg" alt="Google"></img></a>
@@ -43,12 +49,7 @@ export const viewLogin = () => {
     const emailLogInEmail = root.querySelector('#email-login');
     const passwordLogInEmail = root.querySelector('#password-login');
 
-    const showErrorMessage = (errorText) => {
-      let errorMessage = document.createElement('p');
-      let textError = document.createTextNode(errorText);
-      errorMessage.appendChild(textError);
-      document.getElementById('login-error-alert').appendChild(errorMessage);
-    }
+    
     btnLogInEmail.addEventListener('click', (event) => {
       event.preventDefault();
       signInUser(emailLogInEmail.value, passwordLogInEmail.value)
@@ -91,3 +92,4 @@ export const viewLogin = () => {
     });
     return root;
 }
+
