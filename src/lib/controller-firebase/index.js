@@ -13,9 +13,9 @@ export const createUser = (emailSignIn, passwordSignIn, nameSignIn) => {
   .then(user => {
     user.user.updateProfile({
         displayName: nameSignIn
-    })
+    });
     console.log(user);
-  })
+  });
 };
 
 //acceder con gmail y contraseña
@@ -25,7 +25,7 @@ export const signInUser = (emailLogIn, passwordLogIn) => {
 
 
 export const userSesionActive = (callback) => {
-  var userCurrent = firebase.auth().currentUser;
+  let userCurrent = firebase.auth().currentUser;
   if (userCurrent) {
       return callback(userCurrent)
   } else {
@@ -57,7 +57,7 @@ export const facebookLogin = () => {
 export const saveFeed = (uid, text, visuality, userName) => {
   let db = firebase.firestore();
   return db.collection("feeds").add({
-      userId:uid,
+      userId: uid,
       user: userName,
       description: text,
       state: visuality,
@@ -66,45 +66,64 @@ export const saveFeed = (uid, text, visuality, userName) => {
   })
 };
 
-//Leer documentos
+//LEER DOCUMENTOS
 export const viewFeedDb = (callback) => {
+  let user = firebase.auth().currentUser;
   let db = firebase.firestore();
  db.collection("feeds")
  .orderBy('date', 'desc')
  .onSnapshot((querySnapshot) => {
-   let data =[];
+   let data = [];
   querySnapshot.forEach((doc) => {
-      const infoDelDocumento = {
-        id: doc.id,
-        data: doc.data()
-      };
-      data.push(infoDelDocumento)
+    const infoDelDocumento = {
+      id: doc.id,
+      data: doc.data()
+    };
+      data.push(infoDelDocumento);
+      if (doc.data().userId === user.uid || doc.data().state === "Público") {
+      }
   })
   callback(data);
 })
 };
 
-// Borrar publicaciones
+// POST PÚBLICOS
+// export const publicPostsOnly = (callback) => {
+//   let db = firebase.firestore();
+//  db.collection("feeds")
+//  .where("state", "==", "Público")
+//  .onSnapshot((querySnapshot) => {
+//    let data = [];
+//   querySnapshot.forEach((doc) => {
+//     const infoDelDocumento = {
+//       id: doc.id,
+//       data: doc.data()
+//     };
+//       data.push(infoDelDocumento);
+//   })
+//   callback(data);
+// })
+// }
+
+// BORRAR POSTS
 export const deleteFeeds = (id) => {
   let db = firebase.firestore(); 
  return db.collection("feeds").doc(id).delete()
 };
 
-//editar
-export const updatePost = (id, text) => {
+// EDITAR POSTS
+export const updatePost = (id, text, visuality) => {
   let db = firebase.firestore();
-	return db.collection("feeds").doc(id).update({
-		description: text,
-		//state: visuality,
-	})
+  return db.collection("feeds").doc(id).update({
+    description: text,
+    state: visuality,
+  })
 };
 
-//like
+// LIKES
 export const likePost = (id, like) => {
   let db = firebase.firestore();
   return db.collection("feeds").doc(id).update({
     likes:like
   })
 }
-
-
