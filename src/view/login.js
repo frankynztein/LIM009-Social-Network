@@ -91,7 +91,7 @@ export const viewLogin = () => {
       e.preventDefault();
       googleLogin()
         .then(() => changeHash('#/profile'))
-        .catch((error) => alert(error));
+        .catch((error) => console.log(error));
     });
     return root;
 }
