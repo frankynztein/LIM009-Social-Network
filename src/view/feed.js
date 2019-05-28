@@ -5,20 +5,23 @@ export const viewFeed = (user) => {
     const feedPage =
     `<header>
         <p class="text-header">¡Bienvenidx, ${user.displayName || user.name}!</p>
-        <img src= 'assets/fob-white.png' class="logo-img">
+        <img src= 'assets/logonew-white.png' class="logo-img">
         <a id="exit" class="text-header btn-signout" href="#/login">Cerrar sesión</a>     
     </header>
         <div class="feed-container">
             <div class="user-container">
                 <div class="info-user margin-left">
+                    <div> 
+                        <img src="assets/portada1.png" width=100%>
+                    </div>
                     <div class="div-img">
                         <figure>
-                            ${user.photoURL === null ? `<img class="img-user" src="assets/user.png"/>` : `<img class="img-user" src="${user.photoURL}"/>`}
+                            ${user.photoURL === null ? `<img class="img-user" src="assets/user2.png"/>` : `<img class="img-user" src="${user.photoURL}"/>`}
                         </figure>
-                    </div>
-                    <div>
-                        <p class="font-weight-bold">${user.displayName || user.name}</p>
-                        <p class="font-weight-bold">Email: ${user.email}<p>
+                        <div>
+                            <p class="font-weight-bold">${user.displayName || user.name}</p>
+                            <p class="font-weight-bold">Email: ${user.email}<p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -30,10 +33,10 @@ export const viewFeed = (user) => {
                     <div class="btn-comment">
                         <div class="btn-comment-right">
                             <img src="assets/picture.png" class="upload-icon">
-                            <select id ="privacy-${user.uid}" class="privacy">
+                            <select id="privacy-${user.uid}" class="privacy">
                                 <option selected disabled value="">Privacidad</option>   
-                                <option value="private" class="font-weight-privacy">Privado</option>
-                                <option value="public" class="font-weight-privacy">Público</option>
+                                <option value="Privado" class="font-weight-privacy">Privado</option>
+                                <option value="Público" class="font-weight-privacy">Público</option>
                             </select>
                             <button id="btn-publicar" class="btn-login btn-compartir">Compartir</button>
                         </div>
@@ -52,18 +55,20 @@ export const viewFeed = (user) => {
     btnPublicar.addEventListener('click', () => {
         let text = root.querySelector("#text-coment").value;
         let visuality = root.querySelector(`#privacy-${user.uid}`).value;
+        console.log(visuality);
         saveFeed(user.uid,text, visuality, user.displayName);
         document.getElementById("form-input").reset();
+        
+        
+    });
         // console.log(userId);
         // console.log(user.uid);
        // console.log(objInfoPost.id);
-        //console.log(objInfoPost.uid === user.uid);
 
-    });
     const rootList = document.querySelector("#post-container");
     const pintar = (data) => {
         rootList.innerHTML = '';
-        data.forEach(objInfoPost => {
+        data.forEach(objInfoPost => {            
             const article = document.createElement("article");
             article.innerHTML =
                 `<article class="post">
@@ -76,7 +81,7 @@ export const viewFeed = (user) => {
                         </div>
                     </div>
                     <div class="post-user-message">
-                        <textarea id= "text-${objInfoPost.id}" class="post-user-text" disabled= true>${objInfoPost.data.description}</textarea>
+                        <textarea id="text-${objInfoPost.id}" class="post-user-text" disabled=true rows="5" cols="75">${objInfoPost.data.description}</textarea>
                         <img src="" alt="" class="post-user-img">
                     </div>
                     <div class="post-icons">
@@ -86,21 +91,12 @@ export const viewFeed = (user) => {
                             ${(objInfoPost.data.userId === user.uid) ? `<img src="assets/edit.png" alt="Edit" id="btn-edit-${objInfoPost.id}" class="post-icon-edit edit-icon">` :`<img src="assets/edit.png" alt="Edit" id="btn-edit-${objInfoPost.id}" class="post-icon-edit edit-icon hide">` }
                         </div>
                         <div class="post-icons-btn-save">
-                            ${objInfoPost.data.userId === user.uid ?
-                                `<select id="privacy-${objInfoPost.data.userId}">
-                                    <option selected disabled value = "">Privacidad</option>
-                                    <option value = "private" class = "font-weight-privacy">Privado</option>
-                                    <option value = "public" class = "font-weight-privacy">Publico</option>
-                                </select>` :
-                                `<select id="privacy-${objInfoPost.data.userId}" class="privacy hide">
-                                    <option selected disabled value = "">Privacidad</option>
-                                    <option value = "private" class = "font-weight-privacy">Privado</option>
-                                    <option value = "public" class = "font-weight-privacy">Publico</option>
-                                </select>`}  
+                            <div id="btn-privacy-${objInfoPost.id}">
+                                ${objInfoPost.data.userId === user.uid ? `<p id="privacy-value-${objInfoPost.id}" disabled=true class="font-weight-bold">${objInfoPost.data.state}</p>` : '' }  
+                            </div>
                         </div>
                     </div>
                 </article>`;
-           //console.log(templates);  
         const btnDelete = article.querySelector(`#btn-delete-${objInfoPost.id}`);        
         btnDelete.addEventListener("click", () => {
             //if(objInfoPost.data.userId && objInfoPost.data.userId === user.uid){
@@ -109,26 +105,50 @@ export const viewFeed = (user) => {
         });
     
         const btnEdit = article.querySelector(`#btn-edit-${objInfoPost.id}`);
-        let text = article.querySelector(`#text-${objInfoPost.id}`);
-        //let visuality = document.querySelector(`privacy-${objInfoPost.data.userId}`);
+       //let visuality = root.querySelector(`privacy-${user.uid}`);
+        const btnPrivacy = article.querySelector(`#privacy-value-${objInfoPost.id}`);
+
         btnEdit.addEventListener('click', () => {
+            let text = article.querySelector(`#text-${objInfoPost.id}`);
             //console.log(select);
             if(text.disabled){
                 text.disabled = false;
-                btnEdit.src = "assets/picture24px.png"
+                btnEdit.src = "assets/picture24px.png";
+                const prueba=`<select id="privacy-${user.uid}" class="privacy">   
+                                    <option value="Privado" class="font-weight-privacy">Privado</option>
+                                    <option value="Público" class="font-weight-privacy">Público</option>
+                             </select>
+                                `;
+                btnPrivacy.innerHTML = prueba
+                const selectUpdate= article.querySelector(`#privacy-${user.uid}`);
+                console.log(`privacy-${user.uid}`);
+                return updatePost(objInfoPost.id,text.value,selectUpdate.value);
             }else{
                 text.disabled = true;
-                btnEdit.src = "assets/edit.png"
-                return updatePost(objInfoPost.id,text.value); 
-            } 
-                console.log('ok');
-            // updatePost(objInfoPost.id, text);
-            // console.log(objInfoPost.data.userId);
-            //  console.log(user.uid);
-            //  console.log(user);
-            // console.log(objInfoPost.uid);
-            // console.log(objInfoPost.data.userId === user.uid);
+                btnEdit.src = "assets/edit.png";
+                // btnPrivacy.innerHTML="hola"
+                //return updatePost(objInfoPost.id,text.value,selectUpdate.value); 
+            }
         });
+
+//         btnPrivacy.addEventListener('click', () => {
+//             console.log(objInfoPost);
+//             console.log(objInfoPost.data.state);
+//             console.log('btnPrivacy');
+            
+//             if(`${objInfoPost.data.userId === user.uid}`){
+//                 btnPrivacy.innerHTML = 
+//                 `<select id="privacy-${user.uid}" class="privacy">   
+//                     <option value="Privado" class="font-weight-privacy">Privado</option>
+//                     <option value="Público" class="font-weight-privacy">Público</option>
+//                 </select>
+//                 `;
+//         let visuality = root.querySelector(`privacy-${user.uid}`);
+//  return updatePost(objInfoPost.id,visuality.value);
+//             }
+            
+//         })
+
         // let btnLike = document.querySelector(`#btn-like-${objInfoPost.id}`);
         // console.log(btnLike);
         // btnLike.addEventListener("click", (event) => {

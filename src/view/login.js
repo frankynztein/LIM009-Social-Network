@@ -1,14 +1,15 @@
-import {facebookLogin,googleLogin,createUser,userSesionActive,signInUser, exit} from '../lib/controller-firebase/index.js'
+import {facebookLogin,googleLogin,createUser,userSesionActive,signInUser, exit} from '../lib/controller-firebase/index.js';
 //import { viewRegister } from "../view/viewRegister.js";
 
 const changeHash = (hash) =>  {
   location.hash = hash;
 }
 export const showErrorMessage = (errorText) => {
+  const loginErrorAlert = document.getElementById('login-error-alert');
   let errorMessage = document.createElement('p');
   let textError = document.createTextNode(errorText);
   errorMessage.appendChild(textError);
-  document.getElementById('login-error-alert').appendChild(errorMessage);
+  loginErrorAlert.appendChild(errorMessage);
 };
 
 export const viewLogin = () => {
@@ -26,12 +27,12 @@ export const viewLogin = () => {
         </div>
         <div class="column-login">
             <div id='login' class="column-login-login">
-                <img class="center" src= 'https://i.postimg.cc/rpPnvrL1/fbook.png'>
+                <img class="center" src= "assets/logo-new.png">
                 <h1 class="center">¡Bienvenidx, comensal!</h1>
             <form id="login-user">
                 <input class="d-block input-w" type="email" id="email-login" placeholder="Email">
                 <input class="d-block input-w" type="password" id="password-login" placeholder="Password">
-                <section id= "login-error-alert" class= "error-alert"></section>
+                <section id="login-error-alert" class="error-alert"></section>
                 <button class="d-block btn-login btn-width" id="login-btn">Inicia sesión</button>
                 <p class="m-auto">O bien ingresa con...</p>
                 <a id="fbBtn"><img class="social-btn" src="assets/facebook-logo-in-circular-button-outlined-social-symbol.svg" alt="Facebook"></img></a>
@@ -58,14 +59,16 @@ export const viewLogin = () => {
         let errorCode = error.code;
         console.log(error.code);
         if (errorCode === 'auth/user-not-found') {
+          document.getElementById('login-error-alert').innerHTML= '';
           showErrorMessage('Usuario no registrado.');
-        } else if (errorCode === 'auth/weak-password') {
-          showErrorMessage('La clave debe tener al menos 6 dígitos.');
         } else if (errorCode === 'auth/wrong-password') {
-          showErrorMessage('Clave inválida');
+          document.getElementById('login-error-alert').innerHTML= '';
+          showErrorMessage('Clave inválida.');
         } else if (errorCode === 'auth/invalid-email') {
+          document.getElementById('login-error-alert').innerHTML= '';
           showErrorMessage('Correo electrónico inválido.');
         } else {
+          document.getElementById('login-error-alert').innerHTML= '';
           showErrorMessage(errorCode);
         }        
       });
@@ -76,9 +79,12 @@ export const viewLogin = () => {
       e.preventDefault();
       facebookLogin()
       .then(() => changeHash('#/profile'))
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        
+      });
 
-    })
+    });
   
     const loginGoogle = root.querySelector('#googleBtn');
     loginGoogle.addEventListener('click', e => {
@@ -89,4 +95,5 @@ export const viewLogin = () => {
     });
     return root;
 }
+
 
