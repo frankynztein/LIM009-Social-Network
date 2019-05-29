@@ -10,12 +10,6 @@ export const exit = () => {
 //Crear usuario
 export const createUser = (emailSignIn, passwordSignIn, nameSignIn) => {
   return firebase.auth().createUserWithEmailAndPassword(emailSignIn, passwordSignIn)
-  .then(user => {
-    user.user.updateProfile({
-        displayName: nameSignIn
-    });
-    console.log(user);
-  });
 };
 
 //acceder con gmail y contraseña

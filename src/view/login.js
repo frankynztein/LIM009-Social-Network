@@ -27,7 +27,7 @@ export const viewLogin = () => {
         </div>
         <div class="column-login">
             <div id='login' class="column-login-login">
-                <img class="center" src= 'https://i.postimg.cc/rpPnvrL1/fbook.png'>
+                <img class="center" src="assets/logo-new.png">
                 <h1 class="center">¡Bienvenidx, comensal!</h1>
             <form id="login-user">
                 <input class="d-block input-w" type="email" id="email-login" placeholder="Email">

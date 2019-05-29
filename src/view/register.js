@@ -34,7 +34,12 @@ export const viewRegister = () => {
           event.preventDefault();
           console.log(nameSignUp.value);
           createUser(emailSignUp.value, passwordSignUp.value, nameSignUp.value)
-          .then(() => changeHash('#/profile'))
+          .then((user) => {
+            changeHash('#/profile')
+            user.user.updateProfile({
+                displayName: nameSignUp.value
+            });
+          })  
           .catch((error) => {
             let errorCode = error.code;
             if (errorCode === 'auth/invalid-email') {

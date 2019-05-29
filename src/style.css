@@ -179,6 +179,7 @@ body {
 
   .info-user {
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     background: white;
     border:solid #FF2F22;
@@ -187,8 +188,16 @@ body {
     align-items: center;
   } 
 
+  .user-name-email {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: baseline; */
+    align-items: center;
+    margin: 0;
+  }
+
   .div-img{
-    width: 20%
+    width: 80%
   }
   .img-user {
     border-radius: 50%;

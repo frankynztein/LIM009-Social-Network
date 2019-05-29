@@ -5,20 +5,25 @@ export const viewFeed = (user) => {
     const feedPage =
     `<header>
         <p class="text-header">¡Bienvenidx, ${user.displayName || user.name}!</p>
-        <img src= 'assets/fob-white.png' class="logo-img">
+        <img src= 'assets/logonew-white.png' class="logo-img">
         <a id="exit" class="text-header btn-signout" href="#/login">Cerrar sesión</a>     
     </header>
         <div class="feed-container">
             <div class="user-container">
                 <div class="info-user margin-left">
-                    <div class="div-img">
-                        <figure>
-                            ${user.photoURL === null ? `<img class="img-user" src="assets/user.png"/>` : `<img class="img-user" src="${user.photoURL}"/>`}
-                        </figure>
+                    <div> 
+                        <img src="assets/portada1.png" width=100%>
                     </div>
-                    <div>
-                        <p class="font-weight-bold">${user.displayName || user.name}</p>
-                        <p class="font-weight-bold">Email: ${user.email}<p>
+                    <div class="user-name-email">
+                        <div class="div-img">
+                            <figure>
+                                ${user.photoURL === null ? `<img class="img-user" src="assets/user.png"/>` : `<img class="img-user" src="${user.photoURL}"/>`}
+                            </figure>
+                        </div>
+                        <div>
+                            <p class="font-weight-bold">${user.displayName || user.name}</p>
+                            <p class="font-weight-bold">${user.email}<p>
+                        </div>
                     </div>
                 </div>
             </div>
