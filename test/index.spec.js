@@ -14,7 +14,6 @@ global.firebase = firebasemock.MockFirebaseSdk(
 
 // iniciando tests
 
-
 import { exit, createUser, signInUser, googleLogin, facebookLogin  } from "../src/lib/controller-firebase/index.js";
 
 describe('cerrar sesion', () => {
