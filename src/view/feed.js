@@ -5,7 +5,7 @@ export const viewFeed = (user) => {
     const feedPage =
     `<header>
         <p class="text-header">¡Bienvenidx, ${user.displayName || user.name}!</p>
-        <img src= 'assets/logonew-white.png' class="logo-img">
+        <img src= 'assets/logonew-white.png' class="logo-img-feed">
         <a id="exit" class="text-header btn-signout" href="#/login">Cerrar sesión</a>     
     </header>
         <div class="feed-container">
@@ -77,7 +77,7 @@ export const viewFeed = (user) => {
                         </div>
                     </div>
                     <div class="post-user-message">
-                        <textarea id="text-${objInfoPost.id}" class="post-user-text" disabled=true rows="5" cols="75">${objInfoPost.data.description}</textarea>
+                        <textarea id="text-${objInfoPost.id}" class="post-user-text" disabled rows="5">${objInfoPost.data.description}</textarea>
                         <img src="" alt="" class="post-user-img">
                     </div>
                     <div class="post-icons">
