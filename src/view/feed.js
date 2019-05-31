@@ -1,4 +1,4 @@
-import { exit, saveFeed, viewFeedDb, deleteFeeds, updatePost, likePost } from "../lib/controller-firebase/index.js";
+import { exit, saveFeed, viewFeedDb, deleteFeeds, updatePost, likePost, userSesionActive } from "../lib/controller-firebase/index.js";
 
 export const viewFeed = (user) => {
     const root = document.getElementById('content');
@@ -136,7 +136,10 @@ export const viewFeed = (user) => {
         });
     }
 
-    viewFeedDb(pintar);
+    const currentUserId = (user) => {
+        viewFeedDb(pintar, user.uid);
+    }
+    userSesionActive(currentUserId);
     
     return root;
 }

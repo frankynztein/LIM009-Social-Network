@@ -1,12 +1,11 @@
 // configurando firebase mock
 const firebasemock = require('firebase-mock');
-const mockauth = new firebasemock.MockFirebase();
+const mockauth = new firebasemock.MockAuthentication();
 const mockfirestore = new firebasemock.MockFirestore();
 mockfirestore.autoFlush();
 mockauth.autoFlush();
 
 global.firebase = firebasemock.MockFirebaseSdk(
-  // use null if your code does not use RTDB
   path => (path ? mockdatabase.child(path) : null),
   () => mockauth,
   () => mockfirestore
@@ -14,10 +13,9 @@ global.firebase = firebasemock.MockFirebaseSdk(
 
 // iniciando tests
 
-
 import { exit, createUser, signInUser, googleLogin, facebookLogin  } from "../src/lib/controller-firebase/index.js";
 
-describe('cerrar sesion', () => {
+describe('Cerrar sesión', () => {
   it('debería ser una función', () => {
     expect(typeof exit).toBe('function');
   });

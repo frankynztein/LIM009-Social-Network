@@ -61,9 +61,7 @@ export const saveFeed = (uid, text, visuality, userName) => {
 };
 
 //LEER DOCUMENTOS
-export const viewFeedDb = (callback) => {
-  // let user = userSesionActive(callback);
-  let user = firebase.auth().currentUser;
+export const viewFeedDb = (callback, user) => {
   let db = firebase.firestore();
  db.collection("feeds")
  .orderBy('date', 'desc')
@@ -74,7 +72,7 @@ export const viewFeedDb = (callback) => {
       id: doc.id,
       data: doc.data()
     };
-    if (doc.data().userId === user.uid || doc.data().state === "Público") {
+    if (doc.data().userId === user || doc.data().state === "Público") {
       data.push(infoDelDocumento);
       }
   })
