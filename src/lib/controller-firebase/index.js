@@ -4,7 +4,7 @@ export const exit = () => {
 };
 
 //Crear usuario
-export const createUser = (emailSignIn, passwordSignIn, nameSignIn) => {
+export const createUser = (emailSignIn, passwordSignIn) => {
   return firebase.auth().createUserWithEmailAndPassword(emailSignIn, passwordSignIn)
  };
 
@@ -15,7 +15,7 @@ export const signInUser = (emailLogIn, passwordLogIn) => {
 
 export const userSesionActive = (callback) => {
   let userCurrent = firebase.auth().currentUser;
-  if (userCurrent) {
+   if (userCurrent) {
       return callback(userCurrent)
   } else {
       const unsubscribe = firebase.auth().onAuthStateChanged(function (user) {
@@ -34,12 +34,15 @@ export const userSesionActive = (callback) => {
 //iniciar con google
 export const googleLogin = () => {
   const providerGoogle = new firebase.auth.GoogleAuthProvider();
+  //console.log(providerGoogle);
   return firebase.auth().signInWithPopup(providerGoogle)
 };
 //iniciar con facebook
 export const facebookLogin = () => {
   var provider = new firebase.auth.FacebookAuthProvider();
+  //console.log(provider);
   return firebase.auth().signInWithPopup(provider)
+  
 };
 
 // Agregar documentos
@@ -56,8 +59,7 @@ export const saveFeed = (uid, text, visuality, userName) => {
 };
 
 //LEER DOCUMENTOS
-export const viewFeedDb = (callback) => {
-  let user = firebase.auth().currentUser;
+export const viewFeedDb = (callback,user) => {
   let db = firebase.firestore();
  db.collection("feeds")
  .orderBy('date', 'desc')
@@ -68,8 +70,8 @@ export const viewFeedDb = (callback) => {
       id: doc.id,
       data: doc.data()
     };
-      data.push(infoDelDocumento);
-      if (doc.data().userId === user.uid || doc.data().state === "Público") {
+      if (doc.data().userId === user || doc.data().state === "Público") {
+       data.push(infoDelDocumento);
       }
   })
   callback(data);
