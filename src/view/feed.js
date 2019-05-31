@@ -58,12 +58,7 @@ export const viewFeed = (user) => {
         console.log(visuality);
         saveFeed(user.uid,text, visuality, user.displayName);
         document.getElementById("form-input").reset();
-        
-        
     });
-        // console.log(userId);
-        // console.log(user.uid);
-       // console.log(objInfoPost.id);
 
     const rootList = document.querySelector("#post-container");
     const pintar = (data) => {
@@ -99,15 +94,11 @@ export const viewFeed = (user) => {
                 </article>`;
         const btnDelete = article.querySelector(`#btn-delete-${objInfoPost.id}`);        
         btnDelete.addEventListener("click", () => {
-            //if(objInfoPost.data.userId && objInfoPost.data.userId === user.uid){
             deleteFeeds(objInfoPost.id);
-            //}  
         });
     
         const btnEdit = article.querySelector(`#btn-edit-${objInfoPost.id}`);
-       //let visuality = root.querySelector(`privacy-${user.uid}`);
-        
-
+     
         btnEdit.addEventListener('click', () => {
             let text = article.querySelector(`#text-${objInfoPost.id}`);
             const btnPrivacy = article.querySelector(`#privacy-value-${objInfoPost.id}`);
@@ -129,7 +120,6 @@ export const viewFeed = (user) => {
                 text.disabled = true;
                 btnEdit.src = "assets/edit.png";
                 const btnSelect = article.querySelector(`#privacy-${user.uid}`);
-
                 return updatePost(objInfoPost.id,text.value,btnSelect.value); 
             }
         });
@@ -139,4 +129,3 @@ export const viewFeed = (user) => {
     viewFeedDb(pintar);
     return root;
 }
-//comentando

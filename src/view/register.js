@@ -28,13 +28,17 @@ export const viewRegister = () => {
         const btnRegisterEmail = root.querySelector('#register-btn');
         const emailSignUp = root.querySelector('#email-signup');
         const passwordSignUp = root.querySelector('#password-signup');
-        const nameSignUp = root.querySelector('#name-signup');
-        
+      
         btnRegisterEmail.addEventListener('click', (event) => {
           event.preventDefault();
-          console.log(nameSignUp.value);
+          const nameSignUp = root.querySelector('#name-signup');
           createUser(emailSignUp.value, passwordSignUp.value, nameSignUp.value)
-          .then(() => changeHash('#/profile'))
+          .then((user) => {
+            changeHash('#/profile');
+            user.user.updateProfile({
+              displayName: nameSignUp.value
+            });
+          })
           .catch((error) => {
             let errorCode = error.code;
             if (errorCode === 'auth/invalid-email') {
