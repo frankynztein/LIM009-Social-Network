@@ -11,14 +11,20 @@ global.firebase = firebasemock.MockFirebaseSdk(
   () => mockfirestore
 );
 
-// iniciando tests
-
-import { exit, createUser, signInUser, googleLogin, facebookLogin  } from "../src/lib/controller-firebase/index.js";
+// iniciando tests autentificacion
+import { exit, createUser, signInUser, googleLogin, facebookLogin} from "../src/lib/controller-firebase/index.js";
 
 describe('Cerrar sesión', () => {
   it('debería ser una función', () => {
     expect(typeof exit).toBe('function');
   });
+  it('Deberia poder cerrar sesion', (done) => {
+	exit()
+	.then((user) => {
+		expect(user).toBe(undefined)
+		done()
+	})
+})
 });
 
 describe('crear usuarios', () => {//titulo
@@ -50,9 +56,11 @@ describe('Login de Usuarios con Google', () => {
 	it('deberia ser una funcion', () => {
 		expect(typeof googleLogin).toBe('function');
 	});
-	it('Deberia poder iniciar sesion con Google', () => {
-		return googleLogin().then(() => {
-			expect('').toBe('')
+	it('Deberia poder iniciar sesion con Google', (done) => {
+		googleLogin()
+		.then((user) => {
+			expect(user.providerData[0].providerId).toBe('google.com')
+			done()
 		})
 		
 	})
@@ -62,12 +70,13 @@ describe('Login de Usuarios con Facebook', () => {
 	it('deberia ser una funcion', () => {
 		expect(typeof facebookLogin).toBe('function');
 	});
-	it('Deberia poder iniciar sesion con Facebook', () => {
-		return facebookLogin().then(() => {
-			expect('').toBe('')
+	it('Deberia poder iniciar sesion con Facebook', (done) => {
+		facebookLogin()
+		.then((user) => {
+			expect(user.providerData[0].providerId).toBe('facebook.com')
+			done()
 		})
 		
 	})
 });
-
 

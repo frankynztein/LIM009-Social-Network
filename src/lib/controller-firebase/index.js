@@ -1,26 +1,21 @@
-// aqui exportaras las funciones que necesites
-//import {viewFeed,listFeed} from '../../view/feed.js';
-
-
 // Cerrar sesión
 export const exit = () => {
   return firebase.auth().signOut()
 };
 
 //Crear usuario
-export const createUser = (emailSignIn, passwordSignIn, nameSignIn) => {
+export const createUser = (emailSignIn, passwordSignIn) => {
   return firebase.auth().createUserWithEmailAndPassword(emailSignIn, passwordSignIn)
-};
+ };
 
 //acceder con gmail y contraseña
 export const signInUser = (emailLogIn, passwordLogIn) => {
   return firebase.auth().signInWithEmailAndPassword(emailLogIn, passwordLogIn)
 };
 
-
 export const userSesionActive = (callback) => {
   let userCurrent = firebase.auth().currentUser;
-  if (userCurrent) {
+   if (userCurrent) {
       return callback(userCurrent)
   } else {
       const unsubscribe = firebase.auth().onAuthStateChanged(function (user) {
@@ -39,12 +34,15 @@ export const userSesionActive = (callback) => {
 //iniciar con google
 export const googleLogin = () => {
   const providerGoogle = new firebase.auth.GoogleAuthProvider();
+  //console.log(providerGoogle);
   return firebase.auth().signInWithPopup(providerGoogle)
 };
 //iniciar con facebook
 export const facebookLogin = () => {
   var provider = new firebase.auth.FacebookAuthProvider();
+  //console.log(provider);
   return firebase.auth().signInWithPopup(provider)
+  
 };
 
 // Agregar documentos
@@ -61,7 +59,7 @@ export const saveFeed = (uid, text, visuality, userName) => {
 };
 
 //LEER DOCUMENTOS
-export const viewFeedDb = (callback, user) => {
+export const viewFeedDb = (callback,user) => {
   let db = firebase.firestore();
  db.collection("feeds")
  .orderBy('date', 'desc')
@@ -72,8 +70,8 @@ export const viewFeedDb = (callback, user) => {
       id: doc.id,
       data: doc.data()
     };
-    if (doc.data().userId === user || doc.data().state === "Público") {
-      data.push(infoDelDocumento);
+      if (doc.data().userId === user || doc.data().state === "Público") {
+       data.push(infoDelDocumento);
       }
   })
   callback(data);
@@ -98,25 +96,6 @@ export const viewFeedDb = (callback, user) => {
 // })
 // }
 
-// POSTS PRIVADOS
-// export const privatePostsOnly = (callback) => {
-//   let user = firebase.auth().currentUser;
-//   let db = firebase.firestore();
-//  db.collection("feeds")
-//  .where("state", "==", "Private").where("userId", "==", user.uid)
-//  .onSnapshot((querySnapshot) => {
-//    let data = [];
-//   querySnapshot.forEach((doc) => {
-//     const infoDelDocumento = {
-//       id: doc.id,
-//       data: doc.data()
-//     };
-//       data.push(infoDelDocumento);
-//   })
-//   callback(data);
-// })
-// }
-
 // BORRAR POSTS
 export const deleteFeeds = (id) => {
   let db = firebase.firestore(); 
@@ -126,10 +105,10 @@ export const deleteFeeds = (id) => {
 // EDITAR POSTS
 export const updatePost = (id, text, visuality) => {
   let db = firebase.firestore();
-	return db.collection("feeds").doc(id).update({
-		description: text,
-		state: visuality,
-	})
+  return db.collection("feeds").doc(id).update({
+    description: text,
+    state: visuality,
+  })
 };
 
 // LIKES
@@ -139,5 +118,3 @@ export const likePost = (id, like) => {
     likes:like
   })
 }
-
-

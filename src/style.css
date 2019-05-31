@@ -70,6 +70,7 @@ body {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    margin: 0;
     background: #FF2F22;
     padding: 20px;
   }
@@ -77,7 +78,8 @@ body {
   .feed-container {
     display: flex;
     flex-flow: row nowrap;
-    margin: 0 auto;
+    width: 90%;
+    margin: 0 
   }
 
   .circular-landscape {
@@ -186,6 +188,8 @@ body {
     border-radius: 7px;
     width: 100%;
     align-items: center;
+    display: flex;
+    flex-direction: column;
   } 
 
   .user-name-email {
@@ -197,11 +201,13 @@ body {
   }
 
   .div-img{
-    width: 80%
+    display: flex;
+    align-content: space-between;
+    /* width: 30% */
   }
   .img-user {
-    border-radius: 50%;
-    width: 100%;
+    /* border-radius: 50%; */
+    width: 50px;
   }
 
   .font-weight-bold {
@@ -211,14 +217,14 @@ body {
   .wall-feed {
       display: flex;
       flex-flow: column nowrap;
-      width: 100%;
+      width: 50%;
       margin: 0 auto;
     }
 
   .form-post{
     width: 100%;
     margin: 0 auto;
-    margin-top: 3%;
+    margin-top: 2%;
     /* margin-right: 10%; */
     display: flex;
     flex-direction: column;
@@ -299,7 +305,7 @@ body {
   }
 
   .margin-left {
-    margin-left: 3%;
+    margin-left: 1.5%;
   }
 
   select {
