@@ -96,6 +96,8 @@ export const viewFeed = (user) => {
         const btnDelete = article.querySelector(`#btn-delete-${objInfoPost.id}`);        
         btnDelete.addEventListener("click", () => {
             deleteFeeds(objInfoPost.id);
+            console.log(objInfoPost.id);
+            
         });
     
         const btnEdit = article.querySelector(`#btn-edit-${objInfoPost.id}`);
