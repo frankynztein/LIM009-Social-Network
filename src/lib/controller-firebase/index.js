@@ -72,7 +72,7 @@ export const viewFeedDb = (callback,user) => {
     };
       if (doc.data().userId === user || doc.data().state === "Público") {
        data.push(infoDelDocumento);
-      }
+      }  
   })
   callback(data);
 })
@@ -111,10 +111,12 @@ export const updatePost = (id, text, visuality) => {
   })
 };
 
-// LIKES
-export const likePost = (id, like) => {
-  let db = firebase.firestore();
-  return db.collection("feeds").doc(id).update({
-    likes:like
-  })
-}
+// // LIKES
+// export const likePost = (id, like) => {
+//   let db = firebase.firestore();
+//   return db.collection("feeds").doc(id).update({
+//     likes:like
+//   })
+// }
+
+
