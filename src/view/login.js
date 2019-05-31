@@ -1,5 +1,4 @@
 import {facebookLogin,googleLogin,createUser,userSesionActive,signInUser, exit} from '../lib/controller-firebase/index.js';
-//import { viewRegister } from "../view/viewRegister.js";
 
 const changeHash = (hash) =>  {
   location.hash = hash;
@@ -50,7 +49,6 @@ export const viewLogin = () => {
     const emailLogInEmail = root.querySelector('#email-login');
     const passwordLogInEmail = root.querySelector('#password-login');
 
-    
     btnLogInEmail.addEventListener('click', (event) => {
       event.preventDefault();
       signInUser(emailLogInEmail.value, passwordLogInEmail.value)
