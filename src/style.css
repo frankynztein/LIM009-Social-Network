@@ -79,7 +79,7 @@ body {
 
     width: 50%;
     height: 50%;
-    margin-left: -18%;;
+    margin-left: -18%;
   }
 
   .feed-container {
@@ -87,7 +87,7 @@ body {
     flex-flow: column;
     align-items: center;
     width: 90%;
-    margin: 0 
+    margin: 0;
   }
 
   .circular-landscape {
@@ -209,7 +209,6 @@ body {
   .user-name-email {
     display: flex;
     flex-direction: row;
-    /* justify-content: baseline; */
     align-items: center;
     margin: 0;
   }
@@ -217,10 +216,8 @@ body {
   .div-img{
     display: flex;
     align-content: space-between;
-    /* width: 30% */
   }
   .img-user {
-    /* border-radius: 50%; */
     width: 50px;
   }
 
@@ -239,22 +236,12 @@ body {
     width: 100%;
     margin: 0 auto;
     margin-top: 2%;
-    /* margin-right: 10%; */
     display: flex;
     flex-direction: column;
     padding: 9px;
     border-radius: 7px;
     border:solid #FF2F22;
   }
-
-  /* .x-erase {
-      display: flex;
-      flex-direction: row-reverse;
-  } */
-
-  /* .btn-erase {
-      cursor: pointer;
-  } */
 
   .input-comment {
       width: 90%;
@@ -309,13 +296,8 @@ body {
 
 
   .btn-compartir {
-      /* margin: 0 auto;
-      margin-bottom: 2%; */
       border: none;
-      /* border:solid 1px #ccc; */
       border-radius: 13px;
-      /* width: 100%; */
-      /* padding: 2%; */
   }
 
   .margin-left {
@@ -351,8 +333,6 @@ body {
       flex-direction: row;
       justify-content: space-between;
       border: solid 1px #ccc;
-      /* padding: 2%; */
-      /* width: 100%; */
   }
 
   .post-user-info-left {
@@ -369,8 +349,6 @@ body {
       flex-direction: column;
       padding: 2%;
       width: 3%
-      /* justify-content: flex-end; */
-      /* align-content: flex-start; */
   }
 
   .post-user-message {
@@ -411,13 +389,9 @@ body {
   }
 
   .btn-save {
-      /* margin: 0 auto; */
-      /* margin-bottom: 2%; */
       border: none;
-      /* border:solid 1px #ccc; */
       border-radius: 13px;
       width: 100%;
-      /* padding: 5% 20% 5% 20%; */
   }
 
   textarea {
@@ -426,23 +400,40 @@ body {
     border: none;
     font-family: Helvetica, sans-serif;
     font-size: 16px;
- }
+  }
 
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 992px) {
   #content {
     height: 100%;
     width: 100%;
   }
 
+  main {
+    width: 100%;
+  }
+
   #login-container {
     width: 100%;
+    margin: 0;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    padding-top: 10%;
+  }
+
+  .login-image {
+    width: 50%;
+    padding-left: 5%;
+  }
+
+  .column-login {
+    width: 50%;
+    padding-right: 5%;
+  }
+
+  .b-size {
+    width: 100%;
   }
   
   .d-block {
@@ -603,11 +594,9 @@ body {
 
   .user-container {
     display: flex;
-    /* flex-direction: column; */
     justify-content: flex-start;
     width: 90%;
     height: 50%;
-    /* margin: 20px auto; */
 
   }
 
@@ -627,7 +616,6 @@ body {
   .user-name-email {
     display: flex;
     flex-direction: row;
-    /* justify-content: baseline; */
     align-items: center;
     margin: 0;
   }
@@ -635,10 +623,8 @@ body {
   .div-img{
     display: flex;
     align-content: space-between;
-    /* width: 30% */
   }
   .img-user {
-    /* border-radius: 50%; */
     width: 50px;
   }
 
@@ -657,22 +643,12 @@ body {
     width: 100%;
     margin: 0 auto;
     margin-top: 2%;
-    /* margin-right: 10%; */
     display: flex;
     flex-direction: column;
     padding: 9px;
     border-radius: 7px;
     border:solid #FF2F22;
   }
-
-  /* .x-erase {
-      display: flex;
-      flex-direction: row-reverse;
-  } */
-
-  /* .btn-erase {
-      cursor: pointer;
-  } */
 
   .input-comment {
       width: 90%;
@@ -727,13 +703,8 @@ body {
 
 
   .btn-compartir {
-      /* margin: 0 auto;
-      margin-bottom: 2%; */
       border: none;
-      /* border:solid 1px #ccc; */
       border-radius: 13px;
-      /* width: 100%; */
-      /* padding: 2%; */
   }
 
   .margin-left {
@@ -770,8 +741,6 @@ body {
       flex-direction: row;
       justify-content: space-between;
       border: solid 1px #ccc;
-      /* padding: 2%; */
-      /* width: 100%; */
   }
 
   .post-user-info-left {
@@ -787,9 +756,7 @@ body {
       display: flex;
       flex-direction: column;
       padding: 2%;
-      width: 3%
-      /* justify-content: flex-end; */
-      /* align-content: flex-start; */
+      width: 3%;
   }
 
   .post-user-message {
@@ -829,13 +796,9 @@ body {
   }
 
   .btn-save {
-      /* margin: 0 auto; */
-      /* margin-bottom: 2%; */
       border: none;
-      /* border:solid 1px #ccc; */
       border-radius: 13px;
       width: 100%;
-      /* padding: 5% 20% 5% 20%; */
   }
 
   textarea {
@@ -846,6 +809,4 @@ body {
     font-size: 16px;
     width: 100%;
  }
-
-
 }
