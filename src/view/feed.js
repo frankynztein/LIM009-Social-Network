@@ -8,63 +8,62 @@ export const viewFeed = (user) => {
             <p class="text-header">¡Bienvenidx, ${user.displayName || user.name}!</p>
         </div>
         <div class="header-logo">
-            <img src='assets/logonew-white.png' class="logo-img">
+            <img src="assets/logonew-white.png" class= "logo-img">
         </div>
         <div class="header-exit-btn">
-            <p><a id="exit" class="text-header btn-signout" href="#/login">Cerrar sesión</a></p>     
+            <p><a id="exit" class="text-header btn-signout" href="#/login">Cerrar sesión</a></p>  
         </div>
     </header>
-    <main class="feed-container">
-        <div class="user-container">
-            <div class="info-user margin-left">
-                <div> 
-                    <img src="assets/portada1.png" width=100%>
-                </div>
-                <div class="div-img">
-                    <figure>
-                        ${user.photoURL === null ? `<img class="img-user" src="assets/user2.png"/>` : `<img class="img-user" src="${user.photoURL}"/>`}
-                    </figure>
-                    <div>
-                        <p class="font-weight-bold">${user.displayName || user.name}</p>
-                        <p class="font-weight-bold">Email: ${user.email}<p>
+        <main class="feed-container">
+            <div class="user-container">
+                <div class="info-user">
+                    <div> 
+                        <img src="assets/portada1.png" class="user-bg-img">
+                    </div>
+                    <div class="div-img">
+                        <figure>
+                            ${user.photoURL === null ? `<img class="img-user" src="assets/user2.png"/>` : `<img class="img-user" src="${user.photoURL}"/>`}
+                        </figure>
+                        <div>
+                            <p class="font-weight-bold">${user.displayName || user.name}</p>
+                            <p class="font-weight-bold">Email: ${user.email}<p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="wall-feed margin-left" >
-            <div class="form-post">
-                <form id ="form-input">
-                    <input type="text" id="text-coment" class="input-comment" placeholder="¿Qué quieres compartir?">
-                </form>
-                <div class="btn-comment">
-                    <div class="btn-comment-right">
-                        <img src="assets/picture.png" class="upload-icon">
-                        <select id="privacy-${user.uid}" class="privacy">
-                            <option selected disabled value="">Privacidad</option>   
-                            <option value="Privado" class="font-weight-privacy">Privado</option>
-                            <option value="Público" class="font-weight-privacy">Público</option>
-                        </select>
-                        <button id="btn-publicar" class="btn-login btn-compartir">Compartir</button>
+            <div class="wall-feed" >
+                <div class="form-post">
+                    <form id="form-input">
+                        <input type="text" id="text-coment" class="input-comment" placeholder="¿Qué quieres compartir?">
+                    </form>
+                    <div class="btn-comment">
+                        <div class="btn-comment-right">
+                            <img src="assets/picture.png" class="upload-icon">
+                            <select id="privacy-${user.uid}" class="privacy">
+                                <option selected disabled value="">Privacidad</option>   
+                                <option value="Privado" class="font-weight-privacy">Privado</option>
+                                <option value="Público" class="font-weight-privacy">Público</option>
+                            </select>
+                            <button id="btn-publicar" class="btn-login btn-compartir">Compartir</button>
+                        </div>
                     </div>
                 </div>
+                <div id="post-container" class="post-container"></div>
             </div>
-            <div id="post-container"></div>
-        </div>
-    </main>`;
+        </main>`;
     root.innerHTML = feedPage;
     const btnExit = root.querySelector('#exit');
     btnExit.addEventListener('click', () => {
         exit();
     });
+
     const btnPublicar = root.querySelector("#btn-publicar");
 
     btnPublicar.addEventListener('click', () => {
         let text = root.querySelector("#text-coment").value;
         let visuality = root.querySelector(`#privacy-${user.uid}`).value;
-        console.log(visuality);
-        saveFeed(user.uid,text, visuality, user.displayName);
+        saveFeed(user.uid, text, visuality, user.displayName);
         document.getElementById("form-input").reset();
-        
     });
 
     const rootList = document.querySelector("#post-container");
@@ -83,7 +82,7 @@ export const viewFeed = (user) => {
                         </div>
                     </div>
                     <div class="post-user-message">
-                        <textarea id="text-${objInfoPost.id}" class="post-user-text" disabled rows="5">${objInfoPost.data.description}</textarea>
+                        <textarea id="text-${objInfoPost.id}" class="post-user-text" disabled>${objInfoPost.data.description}</textarea>
                         <img src="" alt="" class="post-user-img">
                     </div>
                     <div class="post-icons">
@@ -102,8 +101,6 @@ export const viewFeed = (user) => {
         const btnDelete = article.querySelector(`#btn-delete-${objInfoPost.id}`);        
         btnDelete.addEventListener("click", () => {
             deleteFeeds(objInfoPost.id);
-            console.log(objInfoPost.id);
-            
         });
     
         const btnEdit = article.querySelector(`#btn-edit-${objInfoPost.id}`);
