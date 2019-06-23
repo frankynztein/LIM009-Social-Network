@@ -17,7 +17,7 @@ export const viewRegister = () => {
         <input class="d-block input-w" type="email" id="email-signup" placeholder="Email">
         <input class="d-block input-w" type="password" id="password-signup" placeholder="Password">
         <section id= "login-error-alert" class= "error-alert"></section>
-        <button id="register-btn" class="d-block btn-login btn-width btn-register">Registrarse</button>
+        <button id="register-btn" class="d-block btn-login btn-width btn-register-mobile">Registrarse</button>
         <a href="#/login" class="d-block btn-login btn-width back-register">Regresar</a>
       </form>
     </div>`;
