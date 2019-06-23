@@ -3,6 +3,7 @@ import {facebookLogin,googleLogin,createUser,userSesionActive,signInUser, exit} 
 const changeHash = (hash) =>  {
   location.hash = hash;
 }
+
 export const showErrorMessage = (errorText) => {
   const loginErrorAlert = document.getElementById('login-error-alert');
   let errorMessage = document.createElement('p');
@@ -10,7 +11,6 @@ export const showErrorMessage = (errorText) => {
   errorMessage.appendChild(textError);
   loginErrorAlert.appendChild(errorMessage);
 };
-
 
 export const viewLogin = () => {
     const root= document.getElementById('content')
@@ -22,7 +22,7 @@ export const viewLogin = () => {
               <img class="s-size b-size" src="assets/hamburger2.png" alt="Hamburguesa"></img>
             </figure>
         </div>
-        <div id='login' class="column-login">
+        <div id="login" class="column-login">
             <img class="logo-img" src= "assets/logo-new.png">
             <h1 class="center">¡Bienvenidx, comensal!</h1>
           <form id="login-user">
@@ -50,7 +50,6 @@ export const viewLogin = () => {
       .then(() => changeHash('#/profile'))
       .catch((error) => {
         let errorCode = error.code;
-        console.log(error.code);
         if (errorCode === 'auth/user-not-found') {
           document.getElementById('login-error-alert').innerHTML= '';
           showErrorMessage('Usuario no registrado.');
@@ -74,9 +73,7 @@ export const viewLogin = () => {
       .then(() => changeHash('#/profile'))
       .catch((error) => {
         console.log(error);
-        
       });
-
     });
   
     const loginGoogle = root.querySelector('#googleBtn');

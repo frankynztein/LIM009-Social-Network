@@ -9,12 +9,10 @@ export const viewRegister = () => {
   root.innerHTML = '';
   const register =`
     <div class="register-container">
-      <div class="logo-container">
-        <header>
-        <a href="http://localhost:5501/src/index.html#/login"><img src='assets/fob-white.png' class="logo-img"> </a>      
-        </header>
-      </div>
-      <form class="form-mobile">
+      <header class="header-register">
+        <a href="http://localhost:5501/src/index.html#/login"><img src="assets/logonew-white.png" class="logo-img"></a>      
+      </header>
+      <form class="form-register">
         <input class="d-block input-w" type="text" id="name-signup" placeholder="Usuario">
         <input class="d-block input-w" type="email" id="email-signup" placeholder="Email">
         <input class="d-block input-w" type="password" id="password-signup" placeholder="Password">
